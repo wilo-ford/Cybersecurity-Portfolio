@@ -1,0 +1,40 @@
+const { chromium }=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const { spawn }=require('node:child_process');
+const fs=require('node:fs');
+const assert=require('node:assert/strict');
+let server,browser;
+const different=(a,b,message)=>assert.notDeepEqual(a,b,message);
+(async()=>{
+  let target=process.env.PORTFOLIO_URL;
+  if(!target){target='http://127.0.0.1:4176/';server=spawn(process.execPath,['node_modules/vite/bin/vite.js','preview','--host','127.0.0.1','--port','4176','--strictPort'],{stdio:'pipe',windowsHide:true});await new Promise((resolve,reject)=>{let output='';server.stdout.on('data',d=>{output+=d;if(String(d).includes('Local:'))resolve();});server.stderr.on('data',d=>output+=d);server.on('error',reject);server.on('exit',c=>{if(c)reject(new Error(output));});setTimeout(()=>reject(new Error('Preview timeout: '+output)),60000).unref();});}
+  browser=await chromium.launch({executablePath:process.env.EDGE_EXECUTABLE||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+  const context=await browser.newContext({viewport:{width:1280,height:721},reducedMotion:'no-preference'});
+  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>{Object.defineProperty(navigator,'hardwareConcurrency',{get:()=>4});Object.defineProperty(navigator,'deviceMemory',{get:()=>4});localStorage.setItem('ma-lite','true');});
+  await page.goto(target,{waitUntil:'networkidle'});await page.waitForSelector('.globe-webgl canvas');
+  assert.equal(await page.locator('html').getAttribute('data-motion'),'playing','Old automatic lite setting must not disable animations');
+  // Isolate globe motion from CSS lighting and pointer parallax in the screenshot comparison.
+  await page.addStyleTag({content:'.ambient-lamp,.mug-steam{display:none!important}.immersive-stage{transition:none!important;transform:none!important}'});
+  fs.mkdirSync('test-results',{recursive:true});
+  const globe=page.locator('.globe-mount'),terminal=page.locator('.terminal-body');
+  const first=await globe.screenshot({path:'test-results/globe-before.png'}),textFirst=await terminal.innerText();
+  await page.waitForTimeout(2200);
+  const second=await globe.screenshot({path:'test-results/globe-after.png'});different(first,second,'WebGL pixels must change over time');assert.notEqual(await terminal.innerText(),textFirst,'Terminal must type and produce output');
+  await page.getByRole('button',{name:'Pause',exact:true}).click();await page.waitForTimeout(600);
+  const stopped=await globe.screenshot(),textStopped=await terminal.innerText();await page.waitForTimeout(1300);
+  assert.deepEqual(await globe.screenshot(),stopped,'Pause must freeze the actual image');assert.equal(await terminal.innerText(),textStopped,'Pause must freeze the terminal');
+  await page.reload({waitUntil:'networkidle'});assert.equal(await page.locator('html').getAttribute('data-motion'),'paused','Manual pause persists');
+  await page.getByRole('button',{name:'Animer',exact:true}).click();
+  await page.getByRole('button',{name:'Passer en mode léger',exact:true}).click();await page.waitForSelector('.globe-lite');assert.equal(await page.locator('canvas').count(),0);
+  const liteFirst=await globe.screenshot(),liteText=await terminal.innerText();await page.waitForTimeout(1600);
+  different(liteFirst,await globe.screenshot(),'SVG globe must still turn in lite mode');await page.waitForFunction(previous=>document.querySelector('.terminal-body').innerText!==previous,liteText,{timeout:6500});
+  await page.reload({waitUntil:'networkidle'});await page.waitForSelector('.globe-lite');assert.equal(await page.locator('html').getAttribute('data-motion'),'playing','Quality setting and motion are independent');
+  await page.setViewportSize({width:320,height:740});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Motion controls fit the mobile viewport');
+  const reducedContext=await browser.newContext({viewport:{width:1280,height:721},reducedMotion:'reduce'}),reduced=await reducedContext.newPage();
+  await reduced.goto(target,{waitUntil:'networkidle'});await reduced.waitForSelector('.globe-webgl canvas');assert.equal(await reduced.locator('html').getAttribute('data-motion'),'paused');
+  const reducedFirst=await reduced.locator('.globe-mount').screenshot();await reduced.waitForTimeout(1200);assert.deepEqual(await reduced.locator('.globe-mount').screenshot(),reducedFirst,'System reduced motion is respected');
+  await reduced.getByRole('button',{name:'Animer',exact:true}).click();await reduced.waitForTimeout(400);const resumed=await reduced.locator('.globe-mount').screenshot();await reduced.waitForTimeout(1500);different(resumed,await reduced.locator('.globe-mount').screenshot(),'Explicit opt-in resumes movement');
+  assert.deepEqual(errors,[]);
+  const report={target,passed:true,hardwareConcurrency:4,deviceMemoryGB:4,legacyPreferenceMigrated:true,webglPixelChange:true,terminalTextChange:true,pauseFreezesPixelsAndText:true,pausePersists:true,liteGlobeAnimated:true,liteTerminalAnimated:true,qualityIndependentOfMotion:true,reducedMotionRespected:true,explicitResumeWorks:true,mobileControlsFit:true,errors};
+  fs.writeFileSync('test-results/motion-report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser.close();server?.kill();
+})().catch(async e=>{server?.kill();console.error(e);await browser?.close().catch(()=>{});process.exit(1);});

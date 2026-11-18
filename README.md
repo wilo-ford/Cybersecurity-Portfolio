@@ -1,4 +1,27 @@
-# Cybersecurity Portfolio
+# Mohamed ABOGOURIN — Portfolio cybersécurité
+
+Étudiant en L3 Systèmes d’Information à l’ESGIS, Cotonou. Recherche de stage académique en cybersécurité à partir de janvier 2027.
+
+**[Consulter le portfolio professionnel](https://mohamed-abogourin-portfolio.awalabgr.workers.dev/)**
+
+## Code du site
+
+Le projet React, Vite, Three.js et Tailwind CSS est dans **[cyber-portofolio](cyber-portofolio/)**. Il contient les sources, ressources visuelles, CV téléchargeable, tests, configuration Cloudflare Workers et instructions.
+
+- [Installation et mises à jour](cyber-portofolio/README.md)
+- [Bilan des améliorations](cyber-portofolio/BILAN-AMELIORATIONS.md)
+- [Contenus restant à documenter](cyber-portofolio/A-COMPLETER.md)
+
+```powershell
+git clone https://github.com/wilo-ford/Cybersecurity-Portfolio.git
+cd Cybersecurity-Portfolio/cyber-portofolio
+.\portfolio.ps1 install
+.\portfolio.ps1 dev
+```
+
+Les dépendances, compilations et résultats temporaires sont générés localement. Les write-ups, captures et scripts d’apprentissage restent dans leurs dossiers existants.
+
+## Progression et documentation technique
 
 Portfolio de progression — préparation à un stage en cybersécurité (réseau, Linux, sécu fondamentale, pentest).
 

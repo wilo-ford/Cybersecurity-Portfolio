@@ -1,0 +1,955 @@
+/* Reference: Photo 1.jpg — live UI over an immersive photographic scene. */
+@media(min-width:901px) {
+  .immersive-hero .immersive-stage {
+    transform: translate3d(var(--pan-x,0px),var(--pan-y,0px),0) scale(1.012);
+    transition: transform .45s ease-out;
+    transform-origin: center;
+  }
+}
+/* The globe center and radius align with the photographed pedestal. */
+@media(min-width:901px) and (max-width:1270px) {
+  .immersive-header .github-header {
+    display: none;
+  }
+}
+.hero-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #bcecf7;
+  font-size: 12px;
+  margin-top: 17px;
+  border-bottom: 1px solid #58bedb66;
+  padding: 5px 2px 7px;
+  text-shadow: 0 1px 4px #000;
+}
+.hero-cv>span {
+  font: 8px monospace;
+  letter-spacing: .6px;
+  color: #82b4c7;
+  border: 1px solid #35647980;
+  border-radius: 3px;
+  padding: 3px 4px;
+}
+.hero-cv:hover {
+  color: #53e8ff;
+  border-color: #53e8ff;
+}
+@media(max-width:560px) {
+  .hero-cv {
+    font-size: 11px;
+    margin-top: 16px;
+  }
+}
+.motion-status {
+  font-size: 9px;
+  color: #a0e7ee;
+  background: #020b15c9;
+  border: 1px solid #2195aa4d;
+  border-radius: 14px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+.immersive-hero .motion-button {
+  font-size: 10px;
+  padding: 7px 12px;
+  border-color: #23c6e3b0;
+  color: #e4fbff;
+}
+.immersive-hero .scene-controls {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.mug-steam {
+  position: absolute;
+  left: 41%;
+  top: 56%;
+  width: 4%;
+  height: 7%;
+  z-index: 3;
+  pointer-events: none;
+}
+.mug-steam i {
+  position: absolute;
+  bottom: 0;
+  width: 25%;
+  height: 70%;
+  border-left: 1.5px solid #e0eaff65;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0;
+  animation: steam-rise 4.8s ease-out infinite;
+}
+.mug-steam i:nth-child(2) {
+  left: 25%;
+  animation-delay: 1.6s;
+}
+.mug-steam i:nth-child(3) {
+  left: 50%;
+  animation-delay: 3.2s;
+}
+.ambient-lamp {
+  position: absolute;
+  left: 32%;
+  top: 19%;
+  width: 42%;
+  height: 16%;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse,#ffb43833,transparent 65%);
+  mix-blend-mode: screen;
+  animation: lamp-breathe 6s ease-in-out infinite;
+}
+@keyframes steam-rise {
+  0% {
+    transform: translateY(12px) scaleX(.7);
+    opacity: 0;
+  }
+  25% {
+    opacity: .55;
+  }
+  100% {
+    transform: translateY(-30px) scaleX(1.5);
+    opacity: 0;
+  }
+}
+@keyframes lamp-breathe {
+  0%,100% {
+    opacity: .35;
+  }
+  50% {
+    opacity: .7;
+  }
+}
+.reduce-motion .mug-steam {
+  display: none;
+}
+.reduce-motion .ambient-lamp {
+  opacity: .35;
+}
+@media(min-width:901px) {
+  .immersive-header .header-contact {
+    margin-left: auto;
+  }
+}
+@media(max-width:900px) {
+  .immersive-hero .hero-copy {
+    order: 0;
+  }
+  .immersive-hero .immersive-visual {
+    order: 1;
+  }
+  .immersive-hero .hero-bottom-bar {
+    order: 2;
+  }
+}
+:root {
+  --cyan: #00d5f4;
+  --bg: #030b14;
+  --panel: #071726;
+  --line: #193448;
+  background: #030b14;
+  color: #e9f0f7;
+}
+body {
+  background: #030b14;
+}
+.immersive-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: linear-gradient(#01050bea,#020812ba);
+  border-bottom: 1px solid #24bcea0a;
+  backdrop-filter: blur(14px);
+}
+.immersive-header .header-inner {
+  width: calc(100% - 88px);
+  max-width: 1560px;
+  height: 70px;
+  gap: 20px;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-shrink: 0;
+}
+.brand-mark {
+  display: block;
+  width: 86px;
+  height: 57px;
+  filter: drop-shadow(0 0 6px #18b8f229);
+}
+.brand-mark svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.header-name {
+  border-left: 1px solid #708c9b68;
+  padding-left: 23px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.header-name b {
+  color: #00def2;
+  font-weight: 650;
+}
+.immersive-header .nav {
+  margin-left: clamp(12px,4.2vw,70px);
+  gap: 9px;
+}
+.immersive-header .nav a {
+  font-size: 12px;
+  padding: 12px 14px;
+  border-radius: 20px;
+  color: #e4e9f0;
+  white-space: nowrap;
+}
+.immersive-header .nav a.active {
+  background: linear-gradient(180deg,#00364e70,#06142340 70%,#00739f70);
+  box-shadow: inset 0 1px 0 #00c5f3,0 3px 12px #00c5f328;
+  color: #f8fcff;
+  text-shadow: 0 0 8px #00c9ff;
+}
+.immersive-header .nav a.active:after {
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  height: 1px;
+  box-shadow: 0 0 7px 2px #00d6ff;
+  background: #8deaff;
+}
+.immersive-header .header-contact {
+  font-size: 11px;
+  border: 1px solid #09ccf4;
+  box-shadow: inset 0 0 14px #008fbc60,0 0 10px #06cafa42;
+  border-radius: 24px;
+  background: linear-gradient(#07567877,#071524);
+  gap: 8px;
+  padding: 10px 17px;
+  color: #e9fbff;
+  white-space: nowrap;
+}
+.github-header {
+  border: 1px solid #5f75836b;
+  border-radius: 22px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 11px;
+  padding: 10px 13px;
+}
+.immersive-header .header-contact:hover {
+  background: #005572;
+}
+.immersive-hero.hero {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  height: 56.28vw;
+  min-height: 650px;
+  max-height: 1100px;
+  overflow: hidden;
+  border-bottom: 1px solid #062c42;
+  isolation: isolate;
+}
+.immersive-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.immersive-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.room-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
+.room-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg,#020b1510,transparent 20%,transparent 85%,#00050b3b);
+  pointer-events: none;
+  z-index: 2;
+}
+.immersive-hero .hero-copy {
+  position: absolute;
+  top: 16.7%;
+  left: 7.05%;
+  padding: 0;
+  margin: 0;
+  width: 36%;
+  max-width: 620px;
+  z-index: 3;
+}
+.student-badge {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  padding: 7px 13px;
+  border: 1px solid #a4d6eaa3;
+  background: linear-gradient(115deg,#07304465,#07101c70);
+  box-shadow: inset 0 0 10px #0bcfff24,0 0 13px #00d4ff20;
+  border-radius: 24px;
+  color: #edf5fa;
+  font-size: clamp(12px,1.05vw,17px);
+  line-height: 1.4;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.student-badge svg {
+  color: #a2e9ff;
+  filter: drop-shadow(0 0 4px #18ceff);
+  width: clamp(17px,1.5vw,24px);
+}
+.immersive-hero h1 {
+  font-family: 'Segoe UI',Arial,sans-serif;
+  font-size: clamp(48px,5vw,86px);
+  line-height: 1.03;
+  letter-spacing: -1.9px;
+  font-weight: 750;
+  text-shadow: 0 2px 4px #000b;
+}
+.immersive-hero h1>span {
+  display: inline-block;
+  font-size: 1em;
+  letter-spacing: -.5px;
+  color: #00d5f3;
+  font-weight: 750;
+  font-style: italic;
+  line-height: 1.08;
+  text-shadow: none;
+  background: linear-gradient(#dbfaff 0%,#18e4ff 35%,#02b6db 75%,#1789b8 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 6px #00a9d441);
+  padding-right: 6px;
+}
+.hero-education {
+  font-size: clamp(14px,1.4vw,24px);
+  color: #b9c4d0;
+  margin-top: 4px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.hero-focus {
+  border-left: 2px solid #00e5f0;
+  padding-left: 10px;
+  margin-top: 12px;
+  font-size: clamp(15px,1.5vw,25px);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: .1px;
+  color: #eff2f7;
+}
+.hero-focus>span {
+  padding-inline: 3px;
+  color: #dae9f3;
+}
+.immersive-hero .hero-description {
+  font-size: clamp(12px,1.22vw,20px);
+  line-height: 1.42;
+  color: #c3ccd5;
+  max-width: min(93%,30.5vw);
+  margin-top: 18px;
+  text-shadow: 0 1px 4px #000b;
+}
+.immersive-hero .hero-actions {
+  margin-top: 24px;
+  gap: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.immersive-hero .button {
+  border-radius: 26px;
+  padding: 13px 18px;
+  gap: 9px;
+  font-size: clamp(11px,1vw,16px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+.immersive-hero .primary {
+  background: linear-gradient(180deg,#0f769d,#033e5d 70%,#006c8e);
+  border: 1px solid #39e8ff;
+  color: #f1fcff;
+  box-shadow: inset 0 0 11px #00c4ff9c,0 0 5px 2px #06c9ee62,0 0 20px #00b6ff33;
+  text-shadow: 0 0 6px #d8fdff8a;
+}
+.immersive-hero .primary:hover {
+  background: #0b7596;
+  box-shadow: 0 0 17px #0cceff8a;
+}
+.immersive-hero .secondary {
+  background: #060b1490;
+  border: 1px solid #c0c3d192;
+  color: #f1f3f7;
+  box-shadow: inset 0 0 10px #ffffff08;
+}
+.immersive-hero .secondary:hover {
+  background: #102433b0;
+  border-color: #09d9ff;
+}
+.hero-bottom-bar {
+  position: absolute;
+  z-index: 4;
+  bottom: 19px;
+  left: 7.05%;
+  right: 5.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: .7px;
+  color: #afd0e3;
+  text-shadow: 0 1px 4px #000;
+}
+.hero-scroll svg {
+  color: #43d3ed;
+}
+.immersive-hero .scene-controls {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 7px;
+}
+.immersive-hero .scene-control {
+  font-size: 8px;
+  border-radius: 14px;
+  padding: 6px 9px;
+  background: #030d17bd;
+  color: #b8d6e5;
+  border: 1px solid #608da450;
+  backdrop-filter: blur(8px);
+}
+.immersive-hero .scene-control.selected {
+  border-color: #19cee5;
+  color: #4be8ef;
+}
+.terminal-plane {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 640px;
+  height: 400px;
+  transform-origin: 0 0;
+  background: #010a13;
+  color: #e3e8ed;
+  overflow: hidden;
+  border-radius: 4px;
+  z-index: 1;
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+.terminal-title {
+  height: 35px;
+  background: linear-gradient(#112130,#0a1724);
+  border-bottom: 1px solid #244052;
+  color: #afc3d4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  font: 13px monospace;
+}
+.terminal-title>div {
+  display: flex;
+  gap: 9px;
+}
+.terminal-title i {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #f24256;
+  box-shadow: 0 0 5px #f2425633;
+}
+.terminal-title i:nth-child(2) {
+  background: #ffcc29;
+}
+.terminal-title i:nth-child(3) {
+  background: #52e747;
+}
+.terminal-body {
+  padding: 14px 20px;
+  position: relative;
+  font: 17px/1.43 'Consolas','Courier New',monospace;
+  letter-spacing: -.4px;
+}
+.terminal-body p {
+  font: inherit;
+  white-space: pre;
+  line-height: 1.46;
+}
+.terminal-body b {
+  color: #6cfc2b;
+  font-weight: 550;
+}
+.terminal-current {
+  margin-top: 3px!important;
+}
+.terminal-cursor {
+  animation: blink 1.2s steps(1) infinite;
+  color: #f0f7fb;
+}
+.kali-dragon {
+  position: absolute;
+  width: 167px;
+  height: 92px;
+  right: 9px;
+  top: 0;
+  color: #0988cf;
+  opacity: .75;
+}
+.globe-mount {
+  position: absolute;
+  left: 69.9%;
+  top: 22%;
+  width: 22.2%;
+  height: 44.2%;
+  z-index: 3;
+  filter: drop-shadow(0 0 8px #00aaff7d);
+  touch-action: pan-y;
+}
+.globe-webgl,.globe-static {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+.globe-webgl canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.globe-static {
+  filter: drop-shadow(0 0 5px #0bc3f863);
+}
+.footer-brand .brand-mark {
+  width: 61px;
+  height: 42px;
+}
+.footer {
+  align-items: center;
+}
+.skills-section,.pathway-section {
+  background: linear-gradient(125deg,#06121f,#06101a);
+  border-color: #17394b55;
+}
+.skill,.project {
+  background: #071725b5;
+}
+.project:hover {
+  border-color: #00bbdc70;
+  box-shadow: 0 0 21px #00a2d011;
+}
+.section-heading h2 em {
+  color: #39d7ed;
+}
+.tags>span {
+  color: #9cc4d7;
+  border-color: #23516a66;
+}
+.about-mark {
+  background: radial-gradient(ellipse at right top,#07527355,#071321 70%);
+  border-color: #17607b5c;
+}
+.monogram {
+  font-style: italic;
+}
+.monogram>span {
+  color: #00dcf4;
+}
+.text-button,.project-more {
+  color: #8cdce9;
+}
+.contact-email {
+  color: #c4f5ff;
+  border-color: #1eafc37d;
+}
+@media(min-width:1700px) {
+  .immersive-hero .hero-copy {
+    top: 17.5%;
+  }
+  .student-badge {
+    margin-bottom: 24px;
+  }
+  .hero-education {
+    margin-top: 18px;
+  }
+  .hero-focus {
+    margin-top: 23px;
+  }
+  .immersive-hero .hero-description {
+    margin-top: 32px;
+  }
+  .immersive-hero .hero-actions {
+    margin-top: 32px;
+  }
+  .immersive-hero .button {
+    padding: 17px 24px;
+  }
+}
+@media(max-width:1270px) and (min-width:901px) {
+  .immersive-header .header-inner {
+    width: calc(100% - 48px);
+    gap: 10px;
+  }
+  .brand-mark {
+    width: 70px;
+  }
+  .header-brand {
+    gap: 14px;
+  }
+  .header-name {
+    font-size: 12px;
+    padding-left: 14px;
+  }
+  .immersive-header .nav {
+    gap: 0;
+  }
+  .immersive-header .nav a {
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+  .immersive-header .header-contact {
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+  .immersive-hero .hero-copy {
+    left: 6%;
+    width: 38%;
+    top: 18%;
+  }
+  .immersive-hero h1 {
+    font-size: 4.85vw;
+  }
+  .immersive-hero .hero-description {
+    font-size: 13px;
+    margin-top: 22px;
+  }
+  .hero-education {
+    font-size: 15px;
+  }
+  .hero-focus {
+    font-size: 17px;
+  }
+  .immersive-hero .hero-actions {
+    gap: 12px;
+  }
+  .immersive-hero .button {
+    font-size: 11px;
+    padding: 12px 15px;
+    gap: 7px;
+  }
+}
+@media(max-width:900px) {
+  .immersive-header .header-inner {
+    height: 68px;
+    width: calc(100% - 40px);
+    gap: 16px;
+  }
+  .header-brand {
+    gap: 14px;
+  }
+  .header-name {
+    font-size: 12px;
+    padding-left: 14px;
+  }
+  .brand-mark {
+    width: 62px;
+    height: 48px;
+  }
+  .immersive-header .nav {
+    display: none;
+    position: absolute;
+    top: 67px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 18px 25px;
+    background: #04111ff5;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+    border-bottom: 1px solid #00a6ce66;
+  }
+  .immersive-header .nav.open {
+    display: grid;
+  }
+  .immersive-header .nav a {
+    padding: 12px 15px;
+    text-align: center;
+  }
+  .immersive-header .menu-button {
+    display: grid;
+    margin-left: 0;
+    color: #bceeff;
+  }
+  .immersive-header .header-contact {
+    margin-left: auto;
+  }
+  .github-header {
+    display: none;
+  }
+  .immersive-hero.hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding-top: 104px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(ellipse at 85% 50%,#062842,#030b14 72%);
+  }
+  .immersive-hero .hero-copy {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: calc(100% - 64px);
+    max-width: 700px;
+    margin-inline: auto;
+    padding: 0;
+  }
+  .student-badge {
+    font-size: 12px;
+    margin-bottom: 20px;
+    padding: 7px 12px;
+  }
+  .immersive-hero h1 {
+    font-size: clamp(47px,7.6vw,69px);
+    letter-spacing: -1.8px;
+  }
+  .immersive-hero h1>span {
+    letter-spacing: -1.4px;
+  }
+  .hero-education {
+    font-size: 17px;
+    margin-top: 15px;
+    white-space: normal;
+  }
+  .hero-focus {
+    font-size: 18px;
+    margin-top: 16px;
+  }
+  .immersive-hero .hero-description {
+    font-size: 14px;
+    max-width: 450px;
+    line-height: 1.6;
+    margin-top: 22px;
+  }
+  .immersive-hero .hero-actions {
+    margin-top: 25px;
+    gap: 16px;
+  }
+  .immersive-hero .button {
+    font-size: 12px;
+    padding: 13px 18px;
+    gap: 9px;
+  }
+  .immersive-visual {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 440px;
+    margin-top: -28px;
+    z-index: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .immersive-stage {
+    position: absolute;
+    inset: auto;
+    left: 50%;
+    top: 0;
+    width: 1000px;
+    height: 563px;
+    transform: translateX(-63%);
+  }
+  .room-vignette {
+    background: linear-gradient(180deg,#030b14 0%,#030b1400 15%,#030b1400 90%,#030b14 100%);
+  }
+  .hero-bottom-bar {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: calc(100% - 64px);
+    margin: -3px auto 18px;
+    gap: 12px;
+  }
+  .hero-scroll {
+    font-size: 8px;
+  }
+  .immersive-hero .scene-controls {
+    margin: 0;
+  }
+  .immersive-hero .scene-control {
+    font-size: 8px;
+  }
+  .immersive-hero .hero-copy:after {
+    content: '';
+    position: absolute;
+    inset: -20px -30px -18px;
+    z-index: -1;
+    background: linear-gradient(#030b1400,#030b1400 85%,#030b1470);
+  }
+  .globe-mount {
+    filter: drop-shadow(0 0 6px #00aaff50);
+  }
+}
+@media(max-width:560px) {
+  .immersive-header .header-inner {
+    width: calc(100% - 30px);
+    gap: 8px;
+  }
+  .header-brand {
+    gap: 9px;
+  }
+  .brand-mark {
+    width: 56px;
+    height: 46px;
+  }
+  .header-name {
+    font-size: 10px;
+    padding-left: 10px;
+    line-height: 1.3;
+    max-width: 190px;
+  }
+  .header-name b {
+    display: block;
+    font-size: 11px;
+  }
+  .immersive-header .header-contact {
+    display: none;
+  }
+  .immersive-header .menu-button {
+    margin-left: auto;
+  }
+  .immersive-header .nav {
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 20px;
+  }
+  .immersive-header .nav a {
+    font-size: 12px;
+  }
+  .immersive-hero.hero {
+    padding-top: 102px;
+  }
+  .immersive-hero .hero-copy {
+    width: calc(100% - 44px);
+  }
+  .student-badge {
+    font-size: 11px;
+    gap: 7px;
+    margin-bottom: 19px;
+  }
+  .student-badge svg {
+    width: 17px;
+    height: 17px;
+  }
+  .immersive-hero h1 {
+    font-size: clamp(39px,10.2vw,57px);
+    line-height: 1.08;
+    letter-spacing: -1px;
+  }
+  .immersive-hero h1>span {
+    font-size: .98em;
+    letter-spacing: -1px;
+  }
+  .hero-education {
+    font-size: 13px;
+    margin-top: 13px;
+  }
+  .hero-focus {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-top: 16px;
+    padding-left: 8px;
+  }
+  .hero-focus span {
+    padding-inline: 1px;
+  }
+  .immersive-hero .hero-description {
+    font-size: 12px;
+    line-height: 1.65;
+    margin-top: 19px;
+    max-width: 330px;
+  }
+  .immersive-hero .hero-actions {
+    gap: 11px;
+    margin-top: 23px;
+    align-items: stretch;
+  }
+  .immersive-hero .button {
+    font-size: 10px;
+    padding: 12px 13px;
+    gap: 7px;
+  }
+  .immersive-hero .button svg {
+    width: 15px;
+    height: 15px;
+  }
+  .immersive-visual {
+    height: 335px;
+    margin-top: -2px;
+  }
+  .immersive-stage {
+    width: 790px;
+    height: 444.7px;
+    top: -24px;
+    transform: translateX(-69%);
+  }
+  .hero-bottom-bar {
+    width: calc(100% - 44px);
+    margin-top: 4px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-scroll {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .immersive-hero .scene-controls {
+    gap: 5px;
+  }
+  .immersive-hero .scene-control {
+    font-size: 7px;
+    padding: 5px 7px;
+  }
+  .immersive-hero .scene-control svg {
+    width: 11px;
+    height: 11px;
+  }
+  .footer-brand .brand-mark {
+    width: 48px;
+    height: 37px;
+  }
+  .immersive-hero .hero-copy:after {
+    inset: -5px -20px -15px;
+  }
+  .terminal-plane {
+    border-radius: 2px;
+  }
+  .immersive-hero .globe-mount {
+    width: 22.2%;
+    left: 69.9%;
+  }
+}

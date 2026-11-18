@@ -1,0 +1,732 @@
+/* Shared readability, project hierarchy and case-study layouts. */
+.section {
+  padding-block: 80px;
+}
+.section-intro {
+  font-size: 14px;
+  max-width: 390px;
+}
+.eyebrow {
+  font-size: 11px;
+}
+.about-copy > p:not(.lead), .pathway-intro {
+  font-size: 15px;
+}
+.about-facts span, .about-facts small {
+  font-size: 12px;
+}
+.about-facts strong {
+  font-size: 14px;
+}
+.about-coordinates {
+  font-size: 11px;
+}
+.skills-grid .skill {
+  padding: 26px;
+  min-height: 300px;
+}
+.skills-grid .skill .skill-level {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.skills-grid .skill > p:not(.skill-level) {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.skill-top > span {
+  color: #83a9bb;
+  font-size: 12px;
+}
+.tags > span {
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 4px 7px;
+}
+.documentation-copy .eyebrow {
+  font-size: 10px;
+}
+.documentation-copy > p:last-child, .documentation-strip > a {
+  font-size: 13px;
+}
+.documentation-strip > a {
+  min-height: 44px;
+}
+.skills-note {
+  font-size: 12px;
+}
+.text-button {
+  font-size: 13px;
+  min-height: 36px;
+}
+.footer > p, .footer > p > span, .back-top {
+  font-size: 12px;
+  color: #95b3c3;
+}
+.timeline-date, .timeline-place, .pathway-signature {
+  font-size: 13px;
+}
+.timeline-item > p:last-child {
+  font-size: 14px;
+}
+/* Preserve the selected room while giving the stage search a clear place. */
+.immersive-hero .hero-copy {
+  top: 14.5%;
+  width: 37%;
+}
+.immersive-hero h1 {
+  font-size: clamp(46px, 4.8vw, 84px);
+}
+.immersive-hero .hero-description {
+  font-size: clamp(14px, 1.15vw, 19px);
+  line-height: 1.55;
+  margin-top: 14px;
+}
+.hero-availability {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #bcd9e7;
+}
+.hero-availability strong {
+  color: #e9f7ff;
+  font-weight: 600;
+}
+.hero-focus {
+  font-size: clamp(14px, 1.15vw, 20px);
+  font-weight: 450;
+  color: #a7d5e3;
+  margin-top: 13px;
+}
+.immersive-hero .hero-actions {
+  margin-top: 20px;
+}
+.immersive-hero .primary {
+  box-shadow: inset 0 0 9px #00c4ff65, 0 0 12px #06c9ee45;
+  text-shadow: none;
+}
+.immersive-header .header-contact {
+  box-shadow: inset 0 0 10px #008fbc35;
+}
+.hero-cv {
+  font-size: 13px;
+  min-height: 36px;
+}
+.hero-scroll {
+  font-size: 12px;
+  letter-spacing: 0;
+}
+.immersive-hero .scene-controls {
+  gap: 8px;
+  align-items: center;
+}
+.immersive-hero .scene-control, .immersive-hero .motion-button {
+  font-size: 12px;
+  padding: 8px 12px;
+  min-height: 40px;
+  border-radius: 20px;
+}
+.immersive-hero .scene-controls .motion-status {
+  font-size: 12px;
+  color: #b7d9e7;
+  background: #030d17ed;
+  padding: 8px 10px;
+}
+.immersive-hero .scene-control.selected {
+  border-color: #527f96;
+  color: #c8e6f1;
+}
+.immersive-header .nav a {
+  text-shadow: none;
+}
+.featured-projects {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.project {
+  display: flex;
+  flex-direction: column;
+}
+.project-open {
+  height: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.project-visual {
+  height: 210px;
+  width: 100%;
+  flex-shrink: 0;
+}
+.project-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.project-content .eyebrow {
+  font-size: 10px;
+}
+.project-content > p:not(.eyebrow):not(.project-tagline) {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.project-content h3 {
+  font-size: 22px;
+}
+.project-content .project-tagline {
+  font-size: 13px;
+  margin-block: 8px 12px;
+}
+.project-content .tags {
+  margin-top: auto;
+  padding-top: 18px;
+}
+.project-more {
+  font-size: 13px;
+  margin-top: 18px;
+}
+.visual-caption {
+  position: absolute;
+  left: 18px;
+  bottom: 13px;
+  color: #a6c6d6;
+  font-size: 11px;
+}
+.project-page-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 24px;
+  border-top: 1px solid #233e50;
+  color: #9fe6f1;
+  font-size: 13px;
+}
+.project-page-link > svg {
+  margin-left: auto;
+}
+.project-page-link > span {
+  font-size: 11px;
+  color: #a6c6d6;
+}
+.project-page-link:hover {
+  background: #0a293a;
+}
+.more-projects {
+  margin-top: 30px;
+}
+.more-projects > summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  padding: 20px 24px;
+  background: #071725;
+  border: 1px solid #28495b;
+  border-radius: 6px;
+  color: #d5edf5;
+  font-size: 15px;
+  list-style: none;
+}
+.more-projects > summary::-webkit-details-marker {
+  display: none;
+}
+.more-projects > summary > span {
+  color: #9ab8c9;
+  font-size: 13px;
+  margin-left: auto;
+}
+.more-projects > summary:focus-visible {
+  outline: 2px solid #77dbe0;
+  outline-offset: 5px;
+}
+.more-projects[open] > summary > svg {
+  transform: rotate(180deg);
+}
+.more-projects > .projects-grid {
+  margin-top: 24px;
+}
+.monitoring-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #bce9f2;
+  font: 13px/1.4 monospace;
+}
+.monitoring-diagram > span {
+  padding: 5px 14px;
+  border: 1px solid #306074;
+  border-radius: 4px;
+  background: #0b2433;
+}
+.monitoring-diagram > i {
+  font-style: normal;
+  color: #63dce8;
+}
+.monitoring-diagram > small {
+  font-size: 11px;
+  color: #a2becd;
+  margin-top: 4px;
+}
+.data-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #a9e0ec;
+  font: 13px/1.4 monospace;
+}
+.data-diagram > i {
+  font-style: normal;
+  transform: rotate(90deg);
+}
+.project-terminal {
+  font-size: 12px;
+  width: 85%;
+}
+.project-terminal p {
+  font-size: 12px;
+}
+.container-diagram p, .container-diagram span, .web-visual > span {
+  font-size: 11px;
+}
+/* Sticky close control and explicit focus restoration complement native dialog. */
+.project-dialog {
+  padding: 28px;
+  max-width: 720px;
+  scroll-padding-top: 60px;
+}
+.dialog-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: -28px;
+  z-index: 2;
+  background: #0d202a;
+  margin: -28px -28px 22px;
+  padding: 10px 14px 10px 28px;
+  border-bottom: 1px solid #2d4c5b;
+}
+.dialog-toolbar > span {
+  color: #a4c7d7;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.project-dialog .dialog-close {
+  position: static;
+  min-width: 44px;
+  min-height: 44px;
+}
+.dialog-role {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.dialog-illustration {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  padding-block: 10px 36px;
+  background: #071926;
+  border: 1px solid #284656;
+  border-radius: 6px;
+}
+.practice-block h3 {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.practice-block > p, .practice-block li {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.practice-evidence > p.practice-evidence-label {
+  font-size: 13px;
+}
+.practice-evidence-links > a {
+  font-size: 13px;
+  padding: 12px;
+  min-height: 44px;
+}
+.practice-evidence .evidence-note {
+  font-size: 14px;
+  color: #9fb9c9;
+  margin-bottom: 14px;
+}
+.lesson-source {
+  margin-top: 10px;
+}
+.project-dialog .dialog-actions {
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.contact-redesigned .contact-summary {
+  font-size: 15px;
+}
+.contact-method-label, .contact-method-note {
+  font-size: 12px;
+}
+.contact-secondary > a, .contact-location, .contact-copy-status {
+  font-size: 13px;
+}
+.form-heading p, .contact-field label {
+  font-size: 13px;
+}
+.contact-field label small {
+  font-size: 12px;
+  color: #9abccc;
+}
+.contact-field input, .contact-field select, .contact-field textarea {
+  font-size: 16px;
+}
+.message-length {
+  font-size: 12px;
+  color: #9ab8ca;
+}
+.whatsapp-submit {
+  font-size: 14px;
+  min-height: 48px;
+}
+.whatsapp-help {
+  font-size: 12px;
+  color: #a4c0d0;
+}
+.whatsapp-ready {
+  font-size: 14px;
+}
+.project-page-header {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 95px;
+  border-bottom: 1px solid #234151;
+}
+.project-page-header .brand-mark {
+  width: 70px;
+}
+.case-study {
+  padding-block: 65px 75px;
+}
+.case-study h1 {
+  font-size: clamp(32px, 4.5vw, 58px);
+  letter-spacing: -1.4px;
+}
+.case-summary {
+  max-width: 760px;
+  color: #b8ccd8;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 60px;
+  margin-block: 35px 45px;
+}
+.case-content {
+  min-width: 0;
+}
+.case-content .project-visual {
+  height: 240px;
+  border: 1px solid #274858;
+  border-radius: 6px;
+}
+.case-sidebar {
+  align-self: start;
+  padding: 24px;
+  border: 1px solid #274858;
+  border-radius: 6px;
+  background: #071725;
+}
+.case-sidebar h2 {
+  font-size: 21px;
+  letter-spacing: -.4px;
+  margin-bottom: 20px;
+}
+.case-sidebar p {
+  font-size: 14px;
+  color: #a7c0cf;
+  margin-block: 20px;
+}
+.case-sidebar .text-button {
+  margin-top: 14px;
+}
+.share-status {
+  min-height: 25px;
+}
+@media (min-width: 901px) and (max-width: 1270px) {
+  .immersive-hero .hero-copy {
+    top: 14%;
+    width: 40%;
+  }
+  .immersive-hero.hero {
+    min-height: 730px;
+  }
+  .hero-education {
+    font-size: 15px;
+  }
+  .immersive-header .nav a {
+    padding-inline: 9px;
+    font-size: 12px;
+  }
+  .immersive-header .header-name {
+    display: none;
+  }
+  .immersive-header .nav {
+    margin-left: 0;
+  }
+}
+@media (max-width: 1100px) {
+  .featured-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .featured-projects > .project:first-child {
+    grid-column: 1 / -1;
+  }
+  .featured-projects > .project:first-child .project-open {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .featured-projects > .project:first-child .project-visual {
+    height: 100%;
+    min-height: 220px;
+    border-bottom: 0;
+  }
+  .case-layout {
+    gap: 30px;
+    grid-template-columns: minmax(0, 1fr) 240px;
+  }
+}
+@media (max-width: 900px) {
+  .immersive-hero .hero-copy {
+    top: auto;
+    width: calc(100% - 64px);
+  }
+  .hero-availability {
+    font-size: 15px;
+    margin-top: 17px;
+  }
+  .immersive-hero .hero-description {
+    max-width: 530px;
+    font-size: 15px;
+  }
+  .immersive-hero .hero-bottom-bar {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .immersive-hero .scene-controls {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .immersive-hero .hero-scroll {
+    min-height: 36px;
+  }
+  .about-layout {
+    gap: 35px;
+  }
+  .case-layout {
+    grid-template-columns: 1fr;
+  }
+  .case-sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .about-mark {
+    display: none;
+  }
+  .immersive-header .header-name {
+    font-size: 12px;
+  }
+  .immersive-header .nav a {
+    font-size: 14px;
+  }
+  .section {
+    padding-block: 60px;
+  }
+  .section-heading {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .section-intro {
+    font-size: 14px;
+  }
+  .immersive-hero .hero-copy {
+    width: calc(100% - 44px);
+  }
+  .immersive-hero .hero-education {
+    font-size: 14px;
+  }
+  .immersive-hero .hero-focus {
+    font-size: 14px;
+  }
+  .immersive-hero .hero-description {
+    font-size: 14px;
+    max-width: none;
+  }
+  .immersive-hero .button {
+    font-size: 12px;
+    padding: 13px;
+    min-height: 44px;
+  }
+  .immersive-hero .hero-actions {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .immersive-hero .hero-cv {
+    font-size: 13px;
+    min-height: 44px;
+  }
+  .hero-bottom-bar {
+    width: calc(100% - 44px);
+    margin-bottom: 22px;
+  }
+  .immersive-hero .scene-controls .motion-status {
+    flex-basis: 100%;
+    order: 2;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+  .immersive-hero .scene-control, .immersive-hero .motion-button {
+    min-height: 44px;
+    font-size: 12px;
+    padding: 10px 13px;
+  }
+  .immersive-hero .scene-control svg {
+    width: 16px;
+    height: 16px;
+  }
+  .skills-grid .skill {
+    min-height: 0;
+    padding: 23px;
+  }
+  .skills-grid .skill-top {
+    margin-bottom: 15px;
+  }
+  .skills-grid .skill h3 {
+    font-size: 20px;
+  }
+  .skills-grid .skill .skill-level {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .skills-grid .skill > p:not(.skill-level) {
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+  .documentation-copy .eyebrow {
+    font-size: 10px;
+  }
+  .documentation-copy > p:last-child, .documentation-strip > a {
+    font-size: 13px;
+  }
+  .featured-projects, .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .featured-projects > .project:first-child .project-open {
+    display: flex;
+  }
+  .featured-projects > .project:first-child .project-visual {
+    height: 210px;
+    min-height: 0;
+  }
+  .project-content {
+    padding: 22px;
+  }
+  .project-content > p:not(.eyebrow):not(.project-tagline) {
+    font-size: 14px;
+  }
+  .project-page-link {
+    padding-inline: 22px;
+  }
+  .more-projects > summary {
+    flex-wrap: wrap;
+    padding: 18px;
+    gap: 8px;
+  }
+  .more-projects > summary > span {
+    order: 2;
+    width: 100%;
+    margin: 0;
+  }
+  .more-projects > summary > svg {
+    margin-left: auto;
+  }
+  .project-dialog {
+    padding: 22px;
+    max-height: 90dvh;
+  }
+  .dialog-toolbar {
+    top: -22px;
+    margin: -22px -22px 22px;
+    padding-left: 22px;
+  }
+  .project-dialog h2 {
+    font-size: 28px;
+  }
+  .practice-block > p, .practice-block li {
+    font-size: 15px;
+  }
+  .practice-evidence-links {
+    grid-template-columns: 1fr;
+  }
+  .contact-redesigned .contact-summary {
+    font-size: 14px;
+  }
+  .contact-method-label, .contact-method-note {
+    font-size: 12px;
+  }
+  .form-heading p, .contact-field label {
+    font-size: 13px;
+  }
+  .contact-secondary > a, .contact-location {
+    font-size: 13px;
+  }
+  .whatsapp-submit {
+    font-size: 14px;
+  }
+  .whatsapp-help {
+    font-size: 12px;
+  }
+  .footer {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer > p, .footer > p > span, .back-top {
+    font-size: 12px;
+  }
+  .project-page-header {
+    gap: 14px;
+    flex-wrap: wrap;
+    padding-block: 14px;
+  }
+  .project-page-header .button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  .case-study {
+    padding-block: 40px;
+  }
+  .case-summary {
+    font-size: 16px;
+  }
+  .case-sidebar {
+    padding: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
