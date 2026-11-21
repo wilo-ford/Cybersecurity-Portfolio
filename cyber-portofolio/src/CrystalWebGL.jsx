@@ -32,6 +32,26 @@ export default function CrystalWebGL({ open, paused, onUnavailable }) {
       new THREE.LineBasicMaterial({ color: 0xd8f5ff, transparent: true, opacity: .85 })
     );
     crystal.add(edges);
+    // Illuminated circuitry is attached to the rotating crystal.
+    const traces = [];
+    const circuitPoints = [
+      [[0,1.2,.72],[0,.82,1.08],[.28,.82,1.08],[.28,.43,1.38]],
+      [[-.62,.7,.72],[-.34,.5,1.18],[-.34,.1,1.42],[0,.1,1.58]],
+      [[.75,.45,.45],[.52,.2,1.03],[.52,-.24,1.05],[.18,-.5,1.12]],
+      [[-.65,-.2,.58],[-.45,-.5,.95],[-.12,-.5,1.1],[-.12,-.95,.7]],
+      [[.12,1.05,.85],[.12,.62,1.27],[-.12,.62,1.27],[-.12,.35,1.44]]
+    ];
+    const traceMat = new THREE.LineBasicMaterial({ color: 0x1edfff, transparent: true, opacity: .95 });
+    for (const path of circuitPoints) {
+      const vectors = path.map(([x,y,z]) => new THREE.Vector3(x,y,z));
+      const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(vectors), traceMat);
+      crystal.add(line);
+      traces.push(line);
+      const terminal = new THREE.Mesh(new THREE.SphereGeometry(.045,7,7),new THREE.MeshBasicMaterial({color:0x7ffcff}));
+      terminal.position.copy(vectors[vectors.length-1]);
+      crystal.add(terminal);
+      traces.push(terminal);
+    }
     const shards = [];
     const shardGeo = new THREE.TetrahedronGeometry(.46, 0);
     for (let i = 0; i < 8; i++) {
@@ -68,7 +88,22 @@ export default function CrystalWebGL({ open, paused, onUnavailable }) {
     const ringGeo = new THREE.TorusGeometry(1.95, .012, 4, 96);
     const ring = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color: 0xa6e7ff, transparent: true, opacity: .75 }));
     ring.rotation.x = 1.18;
+    ring.rotation.y = -.24;
     scene.add(ring);
+    const outerRing = new THREE.Mesh(
+      new THREE.TorusGeometry(2.02,.038,5,112),
+      new THREE.MeshBasicMaterial({color:0x168bff,transparent:true,opacity:.42})
+    );
+    outerRing.rotation.copy(ring.rotation);
+    scene.add(outerRing);
+    const glints = new THREE.Group();
+    scene.add(glints);
+    for (let i=0;i<12;i++) {
+      const a=i*Math.PI/6;
+      const sparkle=new THREE.Mesh(new THREE.SphereGeometry(i%3===0?.038:.018,6,6),new THREE.MeshBasicMaterial({color:i%3===0?0xf4ffff:0x3baaff}));
+      sparkle.position.set(Math.cos(a)*2.01,Math.sin(a)*.78,Math.sin(a)*.45);
+      glints.add(sparkle);
+    }
     scene.add(new THREE.AmbientLight(0xb2e3ff, 1.7));
     const key = new THREE.PointLight(0xc5f0ff, 25);
     key.position.set(-2, 3, 4);
@@ -104,12 +139,15 @@ export default function CrystalWebGL({ open, paused, onUnavailable }) {
       if (!still) {
         crystal.rotation.y += .005;
         ring.rotation.z += .002;
+        outerRing.rotation.z += .002;
+        glints.rotation.z += .001;
         nodes.rotation.y += .002;
       }
       solid.scale.setScalar(1 - openness * .55);
       edges.scale.setScalar(1 - openness * .55);
       solid.material.opacity = .58 * (1 - openness * .85);
       edges.material.opacity = .85 * (1 - openness * .8);
+      traces.forEach(trace => { trace.visible = openness < .9; trace.scale.setScalar(Math.max(.001, 1 - openness * .55)); });
       shards.forEach((shard, i) => {
         const a = i * Math.PI / 4;
         shard.position.set(Math.cos(a) * (0.3 + openness * 1.45), Math.sin(a) * (0.3 + openness * 1.35), Math.sin(a * 2) * openness * .6);
