@@ -1,6 +1,6 @@
 {
   "origin": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev",
-  "checkedAt": "2026-11-21T14:07:30.047Z",
+  "checkedAt": "2026-11-21T14:38:46.966Z",
   "passed": true,
   "checks": [
     {
@@ -18,24 +18,24 @@
       "contentType": "image/webp"
     },
     {
-      "path": "/assets/CrystalWebGL-36NXQw58.js",
+      "path": "/assets/CrystalWebGL-B75YBIOt.js",
       "status": 200,
       "bytes": 9366,
-      "verifiedHash": "b1ab0db975abc5a6ddab04ee6c718bd3",
+      "verifiedHash": "9897a29b3afc15cd69ea1fbb3b29474c",
       "contentType": "application/javascript"
     },
     {
-      "path": "/assets/index-Bi-C2B4L.css",
+      "path": "/assets/index-Bl0nnRi0.css",
       "status": 200,
-      "bytes": 92351,
-      "verifiedHash": "a982137d3139831eef899c68cd84e7eb",
+      "bytes": 95457,
+      "verifiedHash": "ae0cd6c307ddec56e24b48a3073bbcd6",
       "contentType": "text/css"
     },
     {
-      "path": "/assets/index-juU0Af0I.js",
+      "path": "/assets/index-CW1AjdAO.js",
       "status": 200,
       "bytes": 279029,
-      "verifiedHash": "ab211fbc1a7b1d926fcf3403b3369f34",
+      "verifiedHash": "21449a4e736c505b4ff9c9d61aa2fced",
       "contentType": "application/javascript"
     },
     {
@@ -76,15 +76,15 @@
     {
       "path": "/fonts/OFL.txt",
       "status": 200,
-      "bytes": 4387,
-      "verifiedHash": "60700d351cac4650c51f3f9db318d2a4",
+      "bytes": 4385,
+      "verifiedHash": "5a2221db94c54139a9133dca6c71b6ea",
       "contentType": "text/plain"
     },
     {
       "path": "/index.html",
       "status": 200,
       "bytes": 59173,
-      "verifiedHash": "5768683d4f3630f6982763d65e2e27e0",
+      "verifiedHash": "2d3aba455edff2183c24a86338bfbc1a",
       "contentType": "text/html"
     },
     {
@@ -98,49 +98,49 @@
       "path": "/projets/bandit/index.html",
       "status": 200,
       "bytes": 11944,
-      "verifiedHash": "928837a3db03e05a6359223bcf5bf255",
+      "verifiedHash": "4a64e78973f26a0c418954ab304d2903",
       "contentType": "text/html"
     },
     {
       "path": "/projets/docker/index.html",
       "status": 200,
       "bytes": 7404,
-      "verifiedHash": "784fe165ec1056a6d429cec29d72e338",
+      "verifiedHash": "09fdf25e4bdb3d43cb297cce7032fe09",
       "contentType": "text/html"
     },
     {
       "path": "/projets/monitoring/index.html",
       "status": 200,
       "bytes": 7204,
-      "verifiedHash": "828d77a946eafc7e5107e7e12d48d512",
+      "verifiedHash": "591f8cb2e2e6655b3df3ec13f12bc856",
       "contentType": "text/html"
     },
     {
       "path": "/projets/pentest-lab/index.html",
       "status": 200,
       "bytes": 7381,
-      "verifiedHash": "97c2c89d3191979b704b16bbdc2a9daf",
+      "verifiedHash": "c320ef03791579e910b756c0479bfb07",
       "contentType": "text/html"
     },
     {
       "path": "/projets/sahelsound/index.html",
       "status": 200,
       "bytes": 7184,
-      "verifiedHash": "81730493e49bf1a4e4be8a5ecb8417cb",
+      "verifiedHash": "0d52c93ffbe00a5c3826aa44bc1a9c7a",
       "contentType": "text/html"
     },
     {
       "path": "/projets/web/index.html",
       "status": 200,
       "bytes": 7579,
-      "verifiedHash": "75adb7df2dcbe6cb317878eeb028febc",
+      "verifiedHash": "3be4cfa4a3771a0a99c1e2fb8d2f885b",
       "contentType": "text/html"
     },
     {
       "path": "/projets/windows-server/index.html",
       "status": 200,
       "bytes": 8075,
-      "verifiedHash": "9010803f855e5d28e478fe4daa08607a",
+      "verifiedHash": "f46b6fa9da5f0a1d42a3f7338af5e646",
       "contentType": "text/html"
     },
     {

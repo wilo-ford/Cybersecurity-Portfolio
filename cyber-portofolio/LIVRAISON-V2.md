@@ -12,12 +12,15 @@ Cette version est destinée à la validation. Aucun workflow ne déploie le site
 - [Accueil mobile 390 × 844](screenshots/accueil-390x844.png)
 - [Cristal ouvert](screenshots/cristal-ouvert-1536x864.png)
 - [Page desktop complète](screenshots/page-1536.png) et [page mobile complète](screenshots/page-390.png)
+- Palette des projets harmonisée : [desktop](screenshots/projets-1440x900.png), [mobile](screenshots/projets-390x844.png) et [fiche projet](screenshots/projet-detail-1440x900.png).
 
 La prévisualisation est publique et porte l’en-tête `X-Robots-Tag: noindex, nofollow`, ainsi qu’un `robots.txt` interdisant l’indexation. Ce n’est pas un contrôle d’accès.
 
 ## Réalisation
 
 L’interface reprend la composition de la référence finale : arches de pierre éclairées, ciel bleu et rose, montagnes, sol sombre, nom en serif italique ivoire et bleu glacé, cartes vitrées, monogramme et grille de dix compétences. L’interface est véritablement responsive ; le décor ne contient ni texte, ni carte, ni cristal. Sa provenance et son prompt sont dans [design/REFERENCE.md](design/REFERENCE.md).
+
+La palette V2 s’applique également aux schémas, terminaux, voyants, aperçus et fiches de tous les projets : bleu nuit, bleu glacé et bleu lumineux. Les anciens accents verts ont été retirés. Le bloc de documentation et le contact WhatsApp emploient aussi cette palette. Les couleurs communes sont regroupées dans `src/v2-theme.css`.
 
 Le cristal Three.js comporte huit facettes transparentes distinctes avec reflets d’environnement et traits spéculaires, des circuits internes, des particules, un anneau à ruban et traînées indépendant, un socle à plusieurs anneaux lumineux. Au clic, Entrée ou Espace, les facettes s’écartent et dévoilent un réseau de dix nœuds. Le second clic referme la géométrie. Le bouton expose son état et un statut textuel est annoncé.
 
