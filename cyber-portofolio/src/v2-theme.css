@@ -1,0 +1,26 @@
+/* Editorial Luxury Cyber V2: shared sections, preserving content and interactions. */
+:root{--bg:#060c1c;--panel:#0c1930;--line:#8abbe033;--cyan:#a8dfff;--muted:#b5c3d7;color:#edf2fa;background:#060c1c}
+body{background:#060c1c;color:#edf2fa}
+.immersive-header{background:#050b1cdd;border-bottom:1px solid #c5e8ff24;backdrop-filter:blur(20px)}
+.immersive-header .nav a{color:#d8e5f2;border-radius:3px}
+.immersive-header .nav a.active{background:#8bcdfb15;box-shadow:inset 0 -1px #a4dbff;color:#fff;text-shadow:none}
+.immersive-header .nav a.active:after{display:none}
+.immersive-header .header-contact{border:1px solid #b8e5ff70;border-radius:3px;background:#8ec8ff16;box-shadow:none;color:#f0f7ff}
+.immersive-header .header-contact:hover{background:#8ec8ff33}
+.header-name{font-family:Georgia,serif;font-style:italic;font-size:16px;color:#f0f1f5}
+.header-name b{color:#a9dfff;font-weight:400}
+.github-header{border-radius:3px;border-color:#8bbfe84a}
+.brand-mark{filter:drop-shadow(0 0 8px #9fdfff22)}
+.section{scroll-margin-top:70px}
+.section-heading h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.035em}
+.section-heading h2 em{color:#b1ddff}
+.skills-section,.pathway-section{background:linear-gradient(135deg,#0a1429,#070d1e)}
+.skill,.project{background:linear-gradient(135deg,#17284588,#0a152d99);border:1px solid #9dcaff2c;border-radius:5px;backdrop-filter:blur(10px)}
+.skill:hover,.project:hover{border-color:#b3e3ff91;box-shadow:0 12px 38px #040c1b66}
+.tags>span{color:#b9d9ed;border-color:#9cc9e83a}
+.about-mark{background:radial-gradient(ellipse at 50% 40%,#79bbef28,#08162b 70%);border:1px solid #a7dcff59;box-shadow:inset 0 0 60px #6cbbec17}
+.monogram{font-family:Georgia,serif;color:#f1f6fc}
+.monogram>span{color:#b4e5ff}
+.text-button,.project-more,.contact-email{color:#b3e5ff}
+.contact-email{border-color:#a1d8ff70}
+@media(max-width:900px){.immersive-header .nav{background:#071127f7;border-bottom:1px solid #b2ddff40}.immersive-header .nav a.active{background:#b8e8ff1a}}
