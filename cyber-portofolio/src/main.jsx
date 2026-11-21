@@ -10,3 +10,5 @@ const root = document.getElementById('root');
 const app = <React.StrictMode><App projectId={projectId} /></React.StrictMode>;
 if (root.hasChildNodes()) hydrateRoot(root, app);else createRoot(root).render(app);
 import './refinements.css';
+
+import './v2-theme.css';
