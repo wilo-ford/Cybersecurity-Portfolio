@@ -5,7 +5,7 @@ let server,browser;
 (async()=>{
   let target=process.env.PORTFOLIO_URL;
   if(!target){target='http://127.0.0.1:4177/';server=spawn(process.execPath,['node_modules/vite/bin/vite.js','preview','--host','127.0.0.1','--port','4177','--strictPort'],{stdio:'pipe',windowsHide:true});await new Promise((resolve,reject)=>{let output='';server.stdout.on('data',d=>{output+=d;if(String(d).includes('Local:'))resolve();});server.stderr.on('data',d=>output+=d);server.on('error',reject);server.on('exit',c=>{if(c)reject(new Error(output));});setTimeout(()=>reject(new Error('Preview timeout: '+output)),60000).unref();});}
-  browser=await chromium.launch({executablePath:process.env.EDGE_EXECUTABLE||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
+  browser=await chromium.launch({...(process.env.EDGE_EXECUTABLE?{executablePath:process.env.EDGE_EXECUTABLE}:{}),headless:true});
   const page=await browser.newPage({viewport:{width:1440,height:1100}}),errors=[],externalRequests=[];
   page.on('pageerror',e=>errors.push(e.message));
   page.on('request',r=>{if(/https:\/\/(?:wa\.me|(?:www\.|web\.)?whatsapp\.com)\//.test(r.url()))externalRequests.push(r.url());});

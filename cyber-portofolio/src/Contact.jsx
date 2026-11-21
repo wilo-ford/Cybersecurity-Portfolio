@@ -33,7 +33,7 @@ export default function Contact() {
     }
   }
   return <section id="contact" className="section page-width contact-section contact-redesigned">
-    <header className="contact-heading"><p className="eyebrow"><span>05</span> CONTACT</p><h2>Le prochain chapitre<br />commence par <em>un échange.</em></h2><p className="contact-summary">{profile.opportunity}</p></header>
+    <header className="contact-heading"><p className="eyebrow"><span>06</span> CONTACT</p><h2>Le prochain chapitre<br />commence par <em>un échange.</em></h2><p className="contact-summary">{profile.opportunity}</p></header>
     <div className="contact-layout">
       <div className="contact-details">
         <div className="contact-methods" aria-label="Mes coordonnées">

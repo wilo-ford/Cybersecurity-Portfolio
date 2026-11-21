@@ -1,0 +1,15 @@
+{
+  "base": "http://127.0.0.1:4173/",
+  "checkedAt": "2026-11-21T15:30:54.639Z",
+  "checks": [
+    "Layout, keyboard crystal, sections, modal focus and CV 1536×864",
+    "Layout, keyboard crystal, sections, modal focus and CV 1440×900",
+    "Layout, keyboard crystal, sections, modal focus and CV 390×844",
+    "Real WebGL idle, reversible facet opening, pause, offscreen suspension and three remounts",
+    "Seven prerendered project pages",
+    "WebGL failure keeps the CSS crystal interactive",
+    "Content and project pages readable without JavaScript"
+  ],
+  "errors": [],
+  "passed": true
+}

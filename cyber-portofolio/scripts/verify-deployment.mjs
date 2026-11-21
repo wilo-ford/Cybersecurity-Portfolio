@@ -4,7 +4,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const origin=process.argv[2] || 'https://mohamed-abogourin-portfolio.awalabgr.workers.dev';
 const checks=[];
-for(const file of await getAssets()){
+for(const file of await getAssets(process.argv[3]||'dist')){
   const url=origin+(file.path==='/index.html'?'/':file.path);
   const r=await fetch(url);assert.equal(r.status,200,url);
   const bytes=Buffer.from(await r.arrayBuffer());

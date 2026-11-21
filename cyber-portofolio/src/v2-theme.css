@@ -1,0 +1,68 @@
+/* Editorial Luxury Cyber V2: shared sections, preserving content and interactions. */
+:root{--bg:#060c1c;--panel:#0c1930;--line:#8abbe033;--cyan:#a8dfff;--muted:#b5c3d7;color:#edf2fa;background:#060c1c}
+body{background:#060c1c;color:#edf2fa}
+.immersive-header{background:#050b1cdd;border-bottom:1px solid #c5e8ff24;backdrop-filter:blur(20px)}
+.immersive-header .nav a{color:#d8e5f2;border-radius:3px}
+.immersive-header .nav a.active{background:#8bcdfb15;box-shadow:inset 0 -1px #a4dbff;color:#fff;text-shadow:none}
+.immersive-header .nav a.active:after{display:none}
+.immersive-header .header-contact{border:1px solid #b8e5ff70;border-radius:3px;background:#8ec8ff16;box-shadow:none;color:#f0f7ff}
+.immersive-header .header-contact:hover{background:#8ec8ff33}
+.header-name{font-family:Georgia,serif;font-style:italic;font-size:16px;color:#f0f1f5}
+.header-name b{color:#a9dfff;font-weight:400}
+.github-header{border-radius:3px;border-color:#8bbfe84a}
+.brand-mark{filter:drop-shadow(0 0 8px #9fdfff22)}
+.section{scroll-margin-top:70px}
+.section-heading h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.035em}
+.section-heading h2 em{color:#b1ddff}
+.skills-section,.pathway-section{background:linear-gradient(135deg,#0a1429,#070d1e)}
+.skill,.project{background:linear-gradient(135deg,#17284588,#0a152d99);border:1px solid #9dcaff2c;border-radius:5px;backdrop-filter:blur(10px)}
+.skill:hover,.project:hover{border-color:#b3e3ff91;box-shadow:0 12px 38px #040c1b66}
+.tags>span{color:#b9d9ed;border-color:#9cc9e83a}
+.about-mark{background:radial-gradient(ellipse at 50% 40%,#79bbef28,#08162b 70%);border:1px solid #a7dcff59;box-shadow:inset 0 0 60px #6cbbec17}
+.monogram{font-family:Georgia,serif;color:#f1f6fc}
+.monogram>span{color:#b4e5ff}
+.text-button,.project-more,.contact-email{color:#b3e5ff}
+.contact-email{border-color:#a1d8ff70}
+/* One V2 palette for every project diagram, preview and full case study. */
+:root{--project-night:#08152b;--project-panel:#102340;--project-line:#6492cc6b;--project-ice:#b7dcff;--project-muted:#a5bad4;--project-blue:#65aaff}
+.project-visual,.dialog-illustration{background:radial-gradient(ellipse at center,#15345a,var(--project-night) 75%);border-color:var(--project-line)}
+.project-terminal,.web-visual{background:var(--project-night);border-color:var(--project-line);color:#edf2fa}
+.project-terminal p>span,.project-terminal .terminal-success,.web-visual b,.web-visual>div,.data-diagram{color:var(--project-ice)}
+.project-terminal .muted,.web-visual>span,.container-diagram>p,.monitoring-diagram>small{color:var(--project-muted)}
+.project-terminal .window-dots i:nth-child(1){background:var(--project-blue)}
+.project-terminal .window-dots i:nth-child(2){background:#88bbf8}
+.project-terminal .window-dots i:nth-child(3){background:var(--project-ice)}
+.container-diagram>div,.monitoring-diagram>span{background:var(--project-panel);border-color:var(--project-line);color:var(--project-ice)}
+.container-diagram .connector,.monitoring-diagram>i,.data-diagram>i{color:var(--project-blue)}
+.monitoring-diagram{color:var(--project-ice)}
+.web-visual code,.project-more,.project-page-link,.case-content .project-visual,.case-sidebar,.project-page-header{border-color:var(--project-line)}
+.project-number,.project-expand,.visual-caption,.dialog-role,.case-summary,.case-sidebar p,.share-status{color:var(--project-muted)}
+.project-expand{border-color:var(--project-line)}
+.project-page-link,.practice-block h3,.practice-evidence-links>a{color:var(--project-ice)}
+.project-page-link:hover,.practice-evidence-links>a:hover{background:var(--project-panel);border-color:var(--project-blue)}
+.more-projects>summary,.case-sidebar,.project-dialog,.dialog-toolbar{background:var(--project-night);border-color:var(--project-line)}
+.project-dialog{color:#edf2fa}
+.dialog-toolbar>span,.practice-evidence>p.practice-evidence-label,.project-dialog .practice-block>p,.project-dialog .practice-block li,.case-study .practice-block>p,.case-study .practice-block li{color:var(--project-muted)}
+.practice-evidence{border-color:var(--project-line)}
+.practice-block li::marker{color:var(--project-blue)}
+.practice-evidence-links>a{background:#10234073;border-color:var(--project-line)}
+.more-projects>summary:focus-visible{outline-color:var(--project-blue)}
+.project-content .eyebrow{color:var(--project-muted)}
+.documentation-strip,.contact-method,.whatsapp-form{background:linear-gradient(135deg,#10234080,var(--project-night));border-color:var(--project-line)}
+.documentation-icon,.contact-whatsapp .contact-method-icon,.form-heading-icon{color:var(--project-ice);background:var(--project-panel);border-color:var(--project-line)}
+.documentation-strip>a,.whatsapp-ready,.whatsapp-ready a{color:var(--project-ice);border-color:var(--project-line)}
+.documentation-strip>a:hover,.contact-whatsapp:hover{border-color:var(--project-blue)}
+.whatsapp-submit{background:linear-gradient(110deg,#d9edff,#65aaff);border-color:var(--project-blue);color:var(--project-night)}
+.whatsapp-submit:hover{background:#a9d2ff;box-shadow:0 0 18px #438fff26}
+@media(max-width:900px){.immersive-header .nav{background:#071127f7;border-bottom:1px solid #b2ddff40}.immersive-header .nav a.active{background:#b8e8ff1a}}
+
+/* Published technical notes, linked to real GitHub write-ups. */
+.v2-journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px}
+.v2-journal-entry{display:flex;flex-direction:column;align-items:flex-start;min-height:220px;padding:30px;border:1px solid #b1dbff3c;border-radius:5px;background:linear-gradient(130deg,#172b4b9e,#09172cba);color:#eaf3ff;text-decoration:none;transition:border-color .25s,transform .25s,background .25s}
+.v2-journal-entry:hover,.v2-journal-entry:focus-visible{border-color:#b1e6ff;transform:translateY(-4px);background:#1c3451}
+.v2-journal-entry>span{font:600 10px/1.5 Reference,Georgia,serif;letter-spacing:.18em;color:#a5d5f3}
+.v2-journal-entry h3{font:italic 27px/1.25 Reference,Georgia,serif;font-weight:400;margin:17px 0 8px}
+.v2-journal-entry p{font:13px/1.8 Reference,Georgia,serif;color:#b8cce1}
+.v2-journal-entry strong{display:inline-flex;gap:8px;align-items:center;margin-top:auto;padding-top:20px;font:500 12px Reference,Georgia,serif;color:#a8e0ff}
+@media(max-width:650px){.v2-journal-grid{grid-template-columns:1fr}.v2-journal-entry{min-height:195px;padding:23px}}
+@media(prefers-reduced-motion:reduce){.v2-journal-entry{transition:none}}

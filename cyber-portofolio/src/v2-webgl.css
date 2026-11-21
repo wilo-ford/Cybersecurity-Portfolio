@@ -1,0 +1,6 @@
+
+/* Three.js progressive enhancement: CSS remains available without WebGL. */
+.v2-webgl{position:absolute;inset:0;z-index:3;pointer-events:none}
+.v2-webgl canvas{width:100%;height:100%;display:block}
+.v2-enhanced .v2-crystal,.v2-enhanced .v2-orbit,.v2-enhanced .v2-network{opacity:.14}
+.v2-enhanced .v2-crystal-core{opacity:0}

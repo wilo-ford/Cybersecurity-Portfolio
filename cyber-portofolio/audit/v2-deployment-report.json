@@ -1,0 +1,196 @@
+{
+  "origin": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev",
+  "checkedAt": "2026-11-21T15:40:00.013Z",
+  "passed": true,
+  "checks": [
+    {
+      "path": "/404.html",
+      "status": 200,
+      "bytes": 823,
+      "verifiedHash": "ec043329e4486876b2a8b1c36771cb86",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/architecture-crepuscule.webp",
+      "status": 200,
+      "bytes": 107082,
+      "verifiedHash": "0c8fa2bf78e459057219e68c9b2c2019",
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/assets/CrystalWebGL-CyXKOQG9.js",
+      "status": 200,
+      "bytes": 16356,
+      "verifiedHash": "c384a791513507bbe8647f474a626c93",
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/assets/index-ChQ11aq0.js",
+      "status": 200,
+      "bytes": 282471,
+      "verifiedHash": "a3a387726bf37e0544d5521ac01fd384",
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/assets/index-CJZS049i.css",
+      "status": 200,
+      "bytes": 100474,
+      "verifiedHash": "fda6a9e9ad566269b7ae6ec8ceef7065",
+      "contentType": "text/css"
+    },
+    {
+      "path": "/assets/three-D2kGMnjl.js",
+      "status": 200,
+      "bytes": 530567,
+      "verifiedHash": "3806c61b02679f3b56097f47248b6e2b",
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/bureau-nocturne.webp",
+      "status": 200,
+      "bytes": 126718,
+      "verifiedHash": "feb463168b28f0c6c8cb8a5e18543c68",
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/cv-mohamed-abogourin.pdf",
+      "status": 200,
+      "bytes": 72197,
+      "verifiedHash": "7c2fb99c373883c579934510ee671379",
+      "contentType": "application/pdf"
+    },
+    {
+      "path": "/favicon.svg",
+      "status": 200,
+      "bytes": 292,
+      "verifiedHash": "01df05c3b894e9d283511334c65b894c",
+      "contentType": "image/svg+xml"
+    },
+    {
+      "path": "/fonts/cormorant-garamond-italic.woff2",
+      "status": 200,
+      "bytes": 39260,
+      "verifiedHash": "6f2f5c3b1abc3d0bb035a927f66a90ca",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/OFL.txt",
+      "status": 200,
+      "bytes": 4385,
+      "verifiedHash": "5a2221db94c54139a9133dca6c71b6ea",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "/fonts/tinos-bold-italic.woff2",
+      "status": 200,
+      "bytes": 21696,
+      "verifiedHash": "ba408c30bf0a14b5268e4d53624ff589",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/tinos-bold.woff2",
+      "status": 200,
+      "bytes": 21720,
+      "verifiedHash": "4823022ab2c053b57797af5b9d3e1d7e",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/tinos-italic.woff2",
+      "status": 200,
+      "bytes": 21540,
+      "verifiedHash": "9b01c513d4bec53539512c8b54e5d802",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/Tinos-OFL.txt",
+      "status": 200,
+      "bytes": 4383,
+      "verifiedHash": "cb3382d4643e8b02c12e322c220a3c76",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "/fonts/tinos.woff2",
+      "status": 200,
+      "bytes": 21196,
+      "verifiedHash": "2284a53f01baf1a1844e21eabcde7ab9",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/index.html",
+      "status": 200,
+      "bytes": 66440,
+      "verifiedHash": "0c189888d58a289528a96e79f1bd0cac",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/partage-portfolio.png",
+      "status": 200,
+      "bytes": 838461,
+      "verifiedHash": "7dfff17ca24ba6ce4c014733127ec808",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/projets/bandit/index.html",
+      "status": 200,
+      "bytes": 12029,
+      "verifiedHash": "8f4d47cb08ac0e674bee30e5de093d8a",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/docker/index.html",
+      "status": 200,
+      "bytes": 7489,
+      "verifiedHash": "60aa4f832c0d9126d602b16182039e9b",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/monitoring/index.html",
+      "status": 200,
+      "bytes": 7289,
+      "verifiedHash": "3828cff18a63863a70b7a1b4aaed5b90",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/pentest-lab/index.html",
+      "status": 200,
+      "bytes": 7466,
+      "verifiedHash": "877b4e601583c041d2ae0f24feadd0ac",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/sahelsound/index.html",
+      "status": 200,
+      "bytes": 7269,
+      "verifiedHash": "cccebc1b035de972eecd63f3b06508d1",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/web/index.html",
+      "status": 200,
+      "bytes": 7664,
+      "verifiedHash": "e6442629fbb5be44ad4fca48f7f96168",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/windows-server/index.html",
+      "status": 200,
+      "bytes": 8160,
+      "verifiedHash": "a94de8be2eba42cba3fc4ffbab9a8177",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "bytes": 26,
+      "verifiedHash": "331ea9090db0c9f6f597bd9840fd5b17",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "bytes": 864,
+      "verifiedHash": "a53d09e3e5cab758ece4e637b9860d3e",
+      "contentType": "application/xml"
+    }
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "target": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev/",
+  "checkedAt": "2026-11-21T14:06:12.422Z",
+  "conditions": {
+    "viewport": "390x844",
+    "cpuSlowdown": 4,
+    "downloadMbit": 1.6,
+    "addedLatencyMs": 150,
+    "cache": "disabled",
+    "sampleSize": 3
+  },
+  "runs": [
+    {
+      "metrics": {
+        "lcp": null,
+        "cls": 0.002270476611548627,
+        "height": 10957,
+        "navigation": {
+          "name": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 11507.79999999702,
+          "navigationId": 5302,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h3",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "zstd",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedRouterSource": "",
+          "workerFinalRouterSource": "",
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 7,
+          "domainLookupStart": 9.199999995529652,
+          "domainLookupEnd": 331.5,
+          "connectStart": 331.5,
+          "secureConnectionStart": 333.5,
+          "connectEnd": 1206.1000000014901,
+          "requestStart": 1206.5,
+          "responseStart": 1749.8999999985099,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 1749.8999999985099,
+          "responseEnd": 1815.1999999955297,
+          "transferSize": 11291,
+          "encodedBodySize": 10991,
+          "decodedBodySize": 59173,
+          "responseStatus": 200,
+          "serverTiming": [
+            {
+              "name": "cfExtPri",
+              "duration": 0,
+              "description": ""
+            }
+          ],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 1894,
+          "domContentLoadedEventStart": 11476.69999999553,
+          "domContentLoadedEventEnd": 11476.89999999851,
+          "domComplete": 11491,
+          "loadEventStart": 11507.79999999702,
+          "loadEventEnd": 11507.79999999702,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        },
+        "resources": [
+          {
+            "name": "architecture-crepuscule.webp",
+            "start": 1810.5,
+            "end": 3145.1999999955297,
+            "duration": 1334.6999999955297,
+            "bytes": 107382,
+            "type": "link"
+          },
+          {
+            "name": "cormorant-garamond-italic.woff2",
+            "start": 1817.1999999955297,
+            "end": 2887.1999999955297,
+            "duration": 1070,
+            "bytes": 39560,
+            "type": "link"
+          },
+          {
+            "name": "index-juU0Af0I.js",
+            "start": 1818,
+            "end": 3376.89999999851,
+            "duration": 1558.8999999985099,
+            "bytes": 89745,
+            "type": "script"
+          },
+          {
+            "name": "index-Bi-C2B4L.css",
+            "start": 1818.1999999955297,
+            "end": 2903.2999999970198,
+            "duration": 1085.1000000014901,
+            "bytes": 24438,
+            "type": "link"
+          },
+          {
+            "name": "favicon.svg",
+            "start": 11619.39999999851,
+            "end": 11971.69999999553,
+            "duration": 352.29999999701977,
+            "bytes": 520,
+            "type": "other"
+          }
+        ],
+        "paints": []
+      },
+      "transferredBytes": 276215,
+      "errors": []
+    },
+    {
+      "metrics": {
+        "lcp": 1872,
+        "cls": 0.002270476611548627,
+        "height": 10957,
+        "navigation": {
+          "name": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 2061.3000000044703,
+          "navigationId": 6006,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "zstd",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedRouterSource": "",
+          "workerFinalRouterSource": "",
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 1.7000000029802322,
+          "domainLookupStart": 5.700000002980232,
+          "domainLookupEnd": 18.100000001490116,
+          "connectStart": 18.100000001490116,
+          "secureConnectionStart": 140.5,
+          "connectEnd": 268,
+          "requestStart": 268.30000000447035,
+          "responseStart": 424.70000000298023,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 424.70000000298023,
+          "responseEnd": 483.20000000298023,
+          "transferSize": 11290,
+          "encodedBodySize": 10990,
+          "decodedBodySize": 59173,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 495.5,
+          "domContentLoadedEventStart": 2051.3000000044703,
+          "domContentLoadedEventEnd": 2051.5,
+          "domComplete": 2057.2000000029802,
+          "loadEventStart": 2061.3000000044703,
+          "loadEventEnd": 2061.3000000044703,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        },
+        "resources": [
+          {
+            "name": "architecture-crepuscule.webp",
+            "start": 476.80000000447035,
+            "end": 1965,
+            "duration": 1488.1999999955297,
+            "bytes": 107382,
+            "type": "link"
+          },
+          {
+            "name": "cormorant-garamond-italic.woff2",
+            "start": 477.5,
+            "end": 1433.6000000014901,
+            "duration": 956.1000000014901,
+            "bytes": 39560,
+            "type": "link"
+          },
+          {
+            "name": "index-juU0Af0I.js",
+            "start": 477.80000000447035,
+            "end": 1949.7000000029802,
+            "duration": 1471.8999999985099,
+            "bytes": 89747,
+            "type": "script"
+          },
+          {
+            "name": "index-Bi-C2B4L.css",
+            "start": 478.1000000014901,
+            "end": 1053.2000000029802,
+            "duration": 575.1000000014901,
+            "bytes": 24500,
+            "type": "link"
+          },
+          {
+            "name": "favicon.svg",
+            "start": 2208,
+            "end": 2365.8000000044703,
+            "duration": 157.80000000447035,
+            "bytes": 520,
+            "type": "other"
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "time": 1872
+          },
+          {
+            "name": "first-contentful-paint",
+            "time": 1872
+          }
+        ]
+      },
+      "transferredBytes": 274696,
+      "errors": []
+    },
+    {
+      "metrics": {
+        "lcp": 2620,
+        "cls": 0.002270476611548627,
+        "height": 10957,
+        "navigation": {
+          "name": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 2717.60000000149,
+          "navigationId": 8375,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h3",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "zstd",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedRouterSource": "",
+          "workerFinalRouterSource": "",
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 3.6999999955296516,
+          "domainLookupStart": 5.600000001490116,
+          "domainLookupEnd": 6.699999995529652,
+          "connectStart": 6.699999995529652,
+          "secureConnectionStart": 7.299999997019768,
+          "connectEnd": 131.10000000149012,
+          "requestStart": 131.5,
+          "responseStart": 281.69999999552965,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 281.69999999552965,
+          "responseEnd": 356.1000000014901,
+          "transferSize": 11292,
+          "encodedBodySize": 10992,
+          "decodedBodySize": 59173,
+          "responseStatus": 200,
+          "serverTiming": [
+            {
+              "name": "cfExtPri",
+              "duration": 0,
+              "description": ""
+            }
+          ],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 387.29999999701977,
+          "domContentLoadedEventStart": 2688.39999999851,
+          "domContentLoadedEventEnd": 2688.7999999970198,
+          "domComplete": 2699.7999999970198,
+          "loadEventStart": 2717.60000000149,
+          "loadEventEnd": 2717.60000000149,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "low"
+          }
+        },
+        "resources": [
+          {
+            "name": "architecture-crepuscule.webp",
+            "start": 340.79999999701977,
+            "end": 1847.1999999955297,
+            "duration": 1506.3999999985099,
+            "bytes": 107382,
+            "type": "link"
+          },
+          {
+            "name": "cormorant-garamond-italic.woff2",
+            "start": 342.19999999552965,
+            "end": 1229.8999999985099,
+            "duration": 887.7000000029802,
+            "bytes": 39560,
+            "type": "link"
+          },
+          {
+            "name": "index-juU0Af0I.js",
+            "start": 342.8999999985099,
+            "end": 1770.7999999970198,
+            "duration": 1427.8999999985099,
+            "bytes": 89747,
+            "type": "script"
+          },
+          {
+            "name": "index-Bi-C2B4L.css",
+            "start": 343.19999999552965,
+            "end": 1105.2999999970198,
+            "duration": 762.1000000014901,
+            "bytes": 24436,
+            "type": "link"
+          },
+          {
+            "name": "favicon.svg",
+            "start": 3251.2999999970198,
+            "end": 3435.1999999955297,
+            "duration": 183.89999999850988,
+            "bytes": 520,
+            "type": "other"
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "time": 2620
+          },
+          {
+            "name": "first-contentful-paint",
+            "time": 2620
+          }
+        ]
+      },
+      "transferredBytes": 276242,
+      "errors": []
+    }
+  ],
+  "paths": [
+    {
+      "path": "robots.txt",
+      "status": 200,
+      "type": "text/plain"
+    },
+    {
+      "path": "sitemap.xml",
+      "status": 200,
+      "type": "application/xml"
+    },
+    {
+      "path": "page-inexistante-verification",
+      "status": 404,
+      "type": "text/html"
+    }
+  ],
+  "fieldData": false,
+  "inpMeasured": false,
+  "passed": true,
+  "validLcpSamples": 2,
+  "measurementNote": "First sample did not expose a paint/LCP entry; null means unavailable, not zero milliseconds. Network and DOM measurements retained. No field CWV or Lighthouse score."
+}

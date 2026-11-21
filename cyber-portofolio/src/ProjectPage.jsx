@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, Copy, Download } from 'lucide-react';
-import { Brand } from './Hero.jsx';
+import Brand from './Brand.jsx';
 import { profile } from './content.js';
 import ProjectVisual from './ProjectVisual.jsx';
 import PracticeDetails from './PracticeDetails.jsx';

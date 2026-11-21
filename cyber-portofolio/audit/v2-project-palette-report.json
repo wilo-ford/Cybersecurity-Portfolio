@@ -1,0 +1,40 @@
+{
+  "target": "http://127.0.0.1:4173/",
+  "checks": [
+    {
+      "viewport": [
+        1536,
+        864
+      ],
+      "cards": 2,
+      "dialog": true,
+      "projectPages": 7,
+      "noGreen": true,
+      "noOverflow": true
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "cards": 2,
+      "dialog": true,
+      "projectPages": 7,
+      "noGreen": true,
+      "noOverflow": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "cards": 2,
+      "dialog": true,
+      "projectPages": 7,
+      "noGreen": true,
+      "noOverflow": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -1,20 +1,22 @@
-# Référence visuelle utilisée
+# Référence finale V2 — 21 novembre 2026
 
-Version corrigée à partir de **Photo 1.jpg**, fournie par l’utilisateur le 18 novembre 2026.
+`reference-maquette.jpg` est l’image validée fournie par Mohamed : arches monumentales bleu nuit, crépuscule rose et bleu, éclairage chaud, sol réfléchissant, cristal et cartes vitrées. Elle sert uniquement de référence de conception ; elle n’est pas chargée par le site.
 
-Le décor reprend le bureau immersif, le portable, la tasse MA, le carnet au premier plan, les plantes, l’étagère éclairée en orange, la fenêtre nocturne et le baobab. L’interface est recréée en HTML/CSS : logo, navigation, badge, nom blanc/cyan, boutons lumineux. Le terminal est un véritable composant React projeté dans les quatre coins de l’écran du portable. Le globe est une scène Three.js avec l’Afrique dessinée en points orange, une grille bleue et des orbites animées. Un mouvement très léger du décor suit le pointeur sur ordinateur.
+## Décor de production
 
-La pièce utilise une image de fond ; ses meubles ne sont pas des modèles 3D manipulables. Le globe, le terminal et les interactions sont indépendants de cette image. Cette composition conserve la richesse de la référence tout en restant légère sur les appareils modestes. Le mode léger garde le même décor et remplace le globe WebGL par un globe SVG animé. Une commande séparée permet de suspendre toutes les animations. Une vapeur discrète monte de la tasse et la lumière de l’étagère varie doucement lorsque les animations sont actives.
+- `public/architecture-crepuscule.webp` : 1672 × 941, 107 082 octets.
+- Outil : Image Generation intégré, mode édition de la référence fournie.
+- Sortie originale : `exec-ea01fc37-932c-46b7-abc7-5828d5021aa1.png` ; conversion WebP qualité 88, sans retouche de composition.
+- Tous les textes, liens, cartes, pictogrammes et éléments du cristal sont des composants React, CSS, SVG et Three.js indépendants du décor.
+- L’architecture utilise un fond photographique avec parallaxe limitée. Ses arches ne sont pas des modèles 3D. Le sol conserve les reflets architecturaux de cette image, complétés par une lueur locale sous le socle.
+- Typographie actuelle : Tinos, quatre styles locaux WOFF2 couvrant le français, environ 86 Ko au total, depuis Google Fonts v26. Licence SIL Open Font License dans `public/fonts/Tinos-OFL.txt` ([source officielle](https://github.com/googlefonts/tinos/blob/main/OFL.txt)). Les fichiers ont été convertis et limités aux caractères français/latins et signes utilisés, sans modification des contours. Le nom emploie le gras italique, complété par des courbes SVG. Les polices Tinos, Bodoni et Cormorant ont été comparées à l’image avant ce choix. La fonte exacte de l’image n’est pas une ressource fournie ni une identification certaine. Aucun appel à un CDN de polices à l’exécution.
 
-## Asset final
-
-- Fichier utilisé par le site : `public/bureau-nocturne.webp` (1672 × 941, environ 124 Ko).
-- Création : outil intégré ImageGen, mode édition à partir de la référence.
-- Conversion WebP pour réduire le poids, sans modification de la composition.
-- Aucun texte de navigation, titre ou bouton n’est incrusté dans le décor.
-
-## Prompt exact de génération
+## Prompt exact de l’asset utilisé
 
 ```text
-Edit the supplied reference as a production website BACKGROUND PLATE, exactly same wide 1280:721 composition and perspective. Preserve the room and camera framing precisely: elegant photorealistic night-time cybersecurity desk, navy blue wall, walnut desktop across bottom, large open laptop at lower center-right, MA monogram mug and amber coaster at center-left of laptop, notebook and pen foreground left, leather chair foreground right, books and trailing green plants on overhead shelf with amber strip light, window far right with moon and African baobab silhouette at twilight, stacked books on right. Keep the cyan edge lighting and warm amber light exactly. REMOVE ALL website UI from the image: entire top navigation/logo bar/name/buttons/text; remove ALL large text, badge, descriptions, headings, and buttons in left half. Replace left half UI with the same clean dark navy wall and subtle atmospheric lighting, leaving it empty and legible for actual HTML text. Keep mug MA logo. On the laptop KEEP the exact screen frame, keyboard and perspective but replace ALL terminal screen contents with a completely empty near-black blue display (#020b13), no text, no dragon, no marks; actual live terminal will be overlaid. REMOVE the entire floating globe sphere and its cyan orbital rings above the physical globe pedestal on right, leave clean matching dark room behind and KEEP the globe pedestal and warm light on its stand and desk. An actual interactive sphere will be placed there in code. Keep physical book spine names Réseaux / Sécurité SI / Pentest if legible. Absolutely no website text or UI anywhere. Preserve positions, proportions, realistic materials and reference visual richness. Output 16:9 landscape.
+Create a CLEAN BACKGROUND ASSET by carefully editing this supplied approved website mockup. Keep the EXACT architectural environment composition, all stone arches in the SAME positions and sizes, warm narrow column lights, blue dusk and pink horizon with distant mountains, glossy dark blue tiled reflective floor, and blurred dark palms framing both edges. Preserve the original overall 16:9 composition: main left column at x4%, central column at x44%, right column at x80%, floor starts at y44%. Keep the left central wall region x10–41%, y5–43% completely dark navy and empty so live HTML text will later go there. REMOVE EVERY website interface element: ALL text, names, MA logos, ALL navigation, ALL buttons, ALL social media icons, ALL cards, ALL lower about and skills panels and skill icons. ALSO REMOVE the central crystal, its orbital rings, its particles and pedestal completely; these will be replaced by real interactive Three.js objects. Seamlessly reconstruct the scene behind removed objects. Where the lower panels were, reconstruct the reflective dark floor. Keep the empty center-right crystal region dark blue with subtle atmospheric blue lighting, NOT a bright sunset. Maintain the reference's exact restrained midnight luxury palette, warm thin highlights and fine stone detail. This must be an architectural background ONLY, ZERO letters, ZERO logo, ZERO UI, ZERO crystal, ZERO pedestal, no people. We will overlay real responsive React text, cards and interactive 3D, so never bake any of that into this image.
 ```
+
+## Adaptations délibérées
+
+Le cristal est une géométrie interactive en temps réel, avec un rendu simplifié par rapport à l’illustration. Les pictogrammes sont des tracés vectoriels cohérents, sans logos d’outils non documentés. Git remplace Burp Suite dans les dix tuiles : le dépôt documente Git, tandis que l’utilisation personnelle de Burp Suite n’est pas confirmée. LinkedIn n’apparaît pas, faute d’URL réelle. Sur mobile, la composition est réorganisée verticalement et le cristal CSS conserve son ouverture interactive.

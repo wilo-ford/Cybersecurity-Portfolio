@@ -1,0 +1,102 @@
+name: Portfolio V2 checks
+
+on:
+  push:
+    branches:
+      - design/editorial-luxury-cyber-v2
+  pull_request:
+    paths:
+      - 'cyber-portofolio/**'
+      - '.github/workflows/portfolio-v2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: cyber-portofolio
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '11.25.0'
+          run_install: false
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Content and integrity tests
+        run: pnpm check
+      - name: Build and prerender
+        run: pnpm build
+      - name: Verify generated pages
+        run: |
+          test -s dist/index.html
+          test -s dist/sitemap.xml
+          test -s dist/projets/bandit/index.html
+          grep -q 'ABOGOURIN' dist/index.html
+
+  browser-preview:
+    runs-on: ubuntu-24.04
+    needs: verify
+    defaults:
+      run:
+        working-directory: cyber-portofolio
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '11.25.0'
+          run_install: false
+      - name: Install and build
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+      - name: Install Chromium for screenshots
+        run: npx --yes playwright@1.58.2 install chromium --with-deps
+      - name: Start local preview
+        run: |
+          pnpm preview --host 127.0.0.1 > /tmp/portfolio-v2-preview.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/portfolio-v2-preview.log
+          exit 1
+      - name: Install browser test runner
+        run: |
+          mkdir -p /tmp/v2-playwright
+          npm install --prefix /tmp/v2-playwright --no-audit --no-fund playwright@1.58.2
+      - name: Test interactive behavior and WebGL
+        run: node scripts/browser-v2.mjs
+      - name: Capture desktop and mobile screenshots
+        env:
+          PLAYWRIGHT_MODULE: /tmp/v2-playwright/node_modules/playwright
+          PORTFOLIO_URL: http://127.0.0.1:4173/
+        run: |
+          node scripts/contact-check.cjs
+          node scripts/visual-check.cjs
+          test -s screenshots/accueil-1536x864.png
+          test -s screenshots/accueil-1440x900.png
+          test -s screenshots/accueil-390x844.png
+      - name: Save screenshots for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-v2-browser-screenshots
+          path: |
+            cyber-portofolio/screenshots/
+            cyber-portofolio/test-results/*.json
+          retention-days: 7
