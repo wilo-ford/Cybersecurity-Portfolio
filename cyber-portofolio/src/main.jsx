@@ -12,3 +12,5 @@ if (root.hasChildNodes()) hydrateRoot(root, app);else createRoot(root).render(ap
 import './refinements.css';
 
 import './v2-theme.css';
+
+import './v2-webgl.css';
