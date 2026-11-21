@@ -24,3 +24,14 @@ body{background:#060c1c;color:#edf2fa}
 .text-button,.project-more,.contact-email{color:#b3e5ff}
 .contact-email{border-color:#a1d8ff70}
 @media(max-width:900px){.immersive-header .nav{background:#071127f7;border-bottom:1px solid #b2ddff40}.immersive-header .nav a.active{background:#b8e8ff1a}}
+
+/* Published technical notes, linked to real GitHub write-ups. */
+.v2-journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px}
+.v2-journal-entry{display:flex;flex-direction:column;align-items:flex-start;min-height:220px;padding:30px;border:1px solid #b1dbff3c;border-radius:5px;background:linear-gradient(130deg,#172b4b9e,#09172cba);color:#eaf3ff;text-decoration:none;transition:border-color .25s,transform .25s,background .25s}
+.v2-journal-entry:hover,.v2-journal-entry:focus-visible{border-color:#b1e6ff;transform:translateY(-4px);background:#1c3451}
+.v2-journal-entry>span{font:600 10px/1.5 system-ui,sans-serif;letter-spacing:.18em;color:#a5d5f3}
+.v2-journal-entry h3{font:italic 27px/1.25 Georgia,serif;font-weight:400;margin:17px 0 8px}
+.v2-journal-entry p{font:13px/1.8 system-ui,sans-serif;color:#b8cce1}
+.v2-journal-entry strong{display:inline-flex;gap:8px;align-items:center;margin-top:auto;padding-top:20px;font:500 12px system-ui,sans-serif;color:#a8e0ff}
+@media(max-width:650px){.v2-journal-grid{grid-template-columns:1fr}.v2-journal-entry{min-height:195px;padding:23px}}
+@media(prefers-reduced-motion:reduce){.v2-journal-entry{transition:none}}
