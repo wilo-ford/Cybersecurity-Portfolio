@@ -1,0 +1,15 @@
+{
+  "base": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev/",
+  "checkedAt": "2026-11-21T14:11:57.781Z",
+  "checks": [
+    "Layout, keyboard crystal, sections, modal focus and CV 1536×864",
+    "Layout, keyboard crystal, sections, modal focus and CV 1440×900",
+    "Layout, keyboard crystal, sections, modal focus and CV 390×844",
+    "Real WebGL idle, reversible facet opening, pause, offscreen suspension and three remounts",
+    "Seven prerendered project pages",
+    "WebGL failure keeps the CSS crystal interactive",
+    "Content and project pages readable without JavaScript"
+  ],
+  "errors": [],
+  "passed": true
+}

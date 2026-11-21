@@ -9,6 +9,11 @@
     "preview": "vite preview --host 127.0.0.1",
     "deploy": "pnpm build && wrangler deploy",
     "check": "node --test tests/*.test.mjs",
+    "test:browser": "node scripts/browser-v2.mjs",
+    "test:contact": "node scripts/contact-check.cjs",
+    "screenshots": "node scripts/visual-check.cjs",
+    "build:preview": "pnpm build && node scripts/prepare-preview.mjs",
+    "deploy:preview": "pnpm build:preview && wrangler deploy --config wrangler.preview.jsonc",
     "cf:whoami": "wrangler whoami"
   },
   "dependencies": {

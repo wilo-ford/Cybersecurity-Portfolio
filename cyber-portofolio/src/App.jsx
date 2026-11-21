@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowUpRight, ArrowRight, ShieldCheck, Terminal, Network, Server, Mail, Menu, X, Github, Download, ExternalLink, Activity, Code } from 'lucide-react';
 import { profile, skills, projects, timeline } from './content';
-import { Brand } from './Hero.jsx';
+import Brand from './Brand.jsx';
 import V2Hero from './V2Hero.jsx';
 import Contact from './Contact.jsx';
 import PracticeDetails, { DocumentationStrip } from './PracticeDetails.jsx';
@@ -125,6 +125,12 @@ function Portfolio() {
     return () => media.removeEventListener('change', changed);
   }, []);
   useEffect(() => {
+    const items=document.querySelectorAll('.skill,.project,.timeline-item,.v2-journal-entry');
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');observer.unobserve(entry.target);}}),{threshold:.08});
+    items.forEach((el,i)=>{el.classList.add('scroll-reveal');el.style.setProperty('--reveal-delay',`${i%3*65}ms`);observer.observe(el);});
+    return()=>observer.disconnect();
+  },[]);
+  useEffect(() => {
     if (!menu) return;
     const onKey = e => {
       if (e.key === 'Escape') setMenu(false);
@@ -144,7 +150,7 @@ function Portfolio() {
             })}</div><DocumentationStrip /><p className="skills-note"><ShieldCheck size={15} /> Pratique en laboratoire, projets académiques et documentation technique.</p></div></section>
       <section id="projets" className="section page-width"><SectionHeading number="03" label="PROJETS & PRATIQUES" title={<>Explorer, comprendre,<br /><em>puis documenter.</em></>}>Trois réalisations pour découvrir ma pratique de Linux, de la supervision et de la sécurité web.</SectionHeading><div className="projects-grid featured-projects">{['bandit', 'monitoring', 'web'].map(id => <ProjectCard key={id} project={projects.find(p => p.id === id)} open={openProject} />)}</div><details className="more-projects"><summary>Voir les 4 autres pratiques <span>Systèmes, Docker, pentest et Python</span><ArrowDown size={18} /></summary><div className="projects-grid">{projects.filter(p => !['bandit', 'monitoring', 'web'].includes(p.id)).map(p => <ProjectCard key={p.id} project={p} open={openProject} />)}</div></details></section>
       <section id="parcours" className="section pathway-section"><div className="page-width pathway-layout"><div><SectionHeading number="04" label="PARCOURS" title={<>Mon parcours<br /><em>à l’ESGIS.</em></>} /><p className="pathway-intro">Une formation en systèmes d’information, complétée par des laboratoires personnels en cybersécurité.</p><span className="pathway-signature">Toujours en apprentissage <ArrowUpRight size={17} /></span></div><div className="timeline">{timeline.map(item => <article className={item.current ? 'timeline-item current' : 'timeline-item'} key={item.date}><span className="timeline-dot" /><p className="timeline-date">{item.date}{item.current && <span>EN COURS</span>}</p><h3>{item.title}</h3><p className="timeline-place">{item.place}</p><p>{item.text}</p></article>)}</div></div></section>
-      <section id="blog" className="section page-width v2-journal"><SectionHeading number="05" label="BLOG & NOTES" title={<>Notes de terrain.<br /><em>Apprendre en partageant.</em></>}>Des comptes rendus techniques réels, rédigés au fil de ma pratique. Pas d’articles fictifs.</SectionHeading><div className="v2-journal-grid">{[
+      <section id="blog" className="section page-width v2-journal"><SectionHeading number="05" label="BLOG & NOTES" title={<>Notes de terrain.<br /><em>Apprendre en partageant.</em></>}>Mes comptes rendus techniques, rédigés au fil de ma pratique du laboratoire OverTheWire Bandit.</SectionHeading><div className="v2-journal-grid">{[
         ['01', 'Bandit · niveaux 0 à 5', 'Premières commandes Linux, navigation et accès SSH.', 'bandit-niveaux-0-5.md'],
         ['02', 'Bandit · niveaux 6 à 12', 'Recherche de fichiers, filtrage et manipulation de données.', 'bandit-niveaux-6-12.md'],
         ['03', 'Bandit · niveaux 13 à 20', 'Authentification SSH et diagnostic de connexion.', 'bandit-niveaux-13-20.md'],

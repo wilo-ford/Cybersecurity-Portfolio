@@ -2,6 +2,8 @@
 
 Portfolio en français, réalisé avec React, Vite, Three.js et Tailwind CSS, pour Cloudflare Workers Static Assets.
 
+**Version V2 en validation** : [prévisualisation séparée](https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev/) · [livraison, captures, tests et mises à jour](LIVRAISON-V2.md). La branche V2 et la PR #1 ne publient pas en production automatiquement.
+
 La version améliorée met en avant la recherche de stage de janvier 2027, trois projets principaux et quatre autres pratiques dépliables. Voir `A-COMPLETER.md` pour les preuves et contributions qui restent à fournir personnellement.
 
 L’accueil et les sept fiches `/projets/<identifiant>/` sont pré-rendus en HTML lors de la compilation, puis rendus interactifs par React. Ils restent consultables sans JavaScript. Le mode léger animé est utilisé par défaut sur mobile ; la 3D est activable sur demande. Sur ordinateur, la 3D démarre après le contenu, en respectant le choix de qualité mémorisé.

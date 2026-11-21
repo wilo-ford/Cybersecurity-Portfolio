@@ -4,7 +4,7 @@ import { profile, projects } from '../src/content.js';
 
 const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 const template = await readFile('dist/index.html', 'utf8');
-const server = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
+const server = await createServer({ optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true }, appType: 'custom' });
 try {
   const { render } = await server.ssrLoadModule('/src/prerender.jsx');
   function document(project) {

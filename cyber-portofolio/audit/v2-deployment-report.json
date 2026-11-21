@@ -1,0 +1,161 @@
+{
+  "origin": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev",
+  "checkedAt": "2026-11-21T14:07:30.047Z",
+  "passed": true,
+  "checks": [
+    {
+      "path": "/404.html",
+      "status": 200,
+      "bytes": 823,
+      "verifiedHash": "ec043329e4486876b2a8b1c36771cb86",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/architecture-crepuscule.webp",
+      "status": 200,
+      "bytes": 107082,
+      "verifiedHash": "0c8fa2bf78e459057219e68c9b2c2019",
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/assets/CrystalWebGL-36NXQw58.js",
+      "status": 200,
+      "bytes": 9366,
+      "verifiedHash": "b1ab0db975abc5a6ddab04ee6c718bd3",
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/assets/index-Bi-C2B4L.css",
+      "status": 200,
+      "bytes": 92351,
+      "verifiedHash": "a982137d3139831eef899c68cd84e7eb",
+      "contentType": "text/css"
+    },
+    {
+      "path": "/assets/index-juU0Af0I.js",
+      "status": 200,
+      "bytes": 279029,
+      "verifiedHash": "ab211fbc1a7b1d926fcf3403b3369f34",
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/assets/three-H31ymkA3.js",
+      "status": 200,
+      "bytes": 510268,
+      "verifiedHash": "dcf1cd696742a515d64a3cf5a9139062",
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/bureau-nocturne.webp",
+      "status": 200,
+      "bytes": 126718,
+      "verifiedHash": "feb463168b28f0c6c8cb8a5e18543c68",
+      "contentType": "image/webp"
+    },
+    {
+      "path": "/cv-mohamed-abogourin.pdf",
+      "status": 200,
+      "bytes": 72197,
+      "verifiedHash": "7c2fb99c373883c579934510ee671379",
+      "contentType": "application/pdf"
+    },
+    {
+      "path": "/favicon.svg",
+      "status": 200,
+      "bytes": 292,
+      "verifiedHash": "01df05c3b894e9d283511334c65b894c",
+      "contentType": "image/svg+xml"
+    },
+    {
+      "path": "/fonts/cormorant-garamond-italic.woff2",
+      "status": 200,
+      "bytes": 39260,
+      "verifiedHash": "6f2f5c3b1abc3d0bb035a927f66a90ca",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/OFL.txt",
+      "status": 200,
+      "bytes": 4387,
+      "verifiedHash": "60700d351cac4650c51f3f9db318d2a4",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "/index.html",
+      "status": 200,
+      "bytes": 59173,
+      "verifiedHash": "5768683d4f3630f6982763d65e2e27e0",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/partage-portfolio.png",
+      "status": 200,
+      "bytes": 828563,
+      "verifiedHash": "e885859472c6aedc40fd40232d11ddab",
+      "contentType": "image/png"
+    },
+    {
+      "path": "/projets/bandit/index.html",
+      "status": 200,
+      "bytes": 11944,
+      "verifiedHash": "928837a3db03e05a6359223bcf5bf255",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/docker/index.html",
+      "status": 200,
+      "bytes": 7404,
+      "verifiedHash": "784fe165ec1056a6d429cec29d72e338",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/monitoring/index.html",
+      "status": 200,
+      "bytes": 7204,
+      "verifiedHash": "828d77a946eafc7e5107e7e12d48d512",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/pentest-lab/index.html",
+      "status": 200,
+      "bytes": 7381,
+      "verifiedHash": "97c2c89d3191979b704b16bbdc2a9daf",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/sahelsound/index.html",
+      "status": 200,
+      "bytes": 7184,
+      "verifiedHash": "81730493e49bf1a4e4be8a5ecb8417cb",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/web/index.html",
+      "status": 200,
+      "bytes": 7579,
+      "verifiedHash": "75adb7df2dcbe6cb317878eeb028febc",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/projets/windows-server/index.html",
+      "status": 200,
+      "bytes": 8075,
+      "verifiedHash": "9010803f855e5d28e478fe4daa08607a",
+      "contentType": "text/html"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "bytes": 26,
+      "verifiedHash": "331ea9090db0c9f6f597bd9840fd5b17",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "bytes": 864,
+      "verifiedHash": "a53d09e3e5cab758ece4e637b9860d3e",
+      "contentType": "application/xml"
+    }
+  ]
+}

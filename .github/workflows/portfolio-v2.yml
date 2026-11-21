@@ -83,15 +83,20 @@ jobs:
       - name: Test interactive behavior and WebGL
         run: node scripts/browser-v2.mjs
       - name: Capture desktop and mobile screenshots
+        env:
+          PLAYWRIGHT_MODULE: /tmp/v2-playwright/node_modules/playwright
+          PORTFOLIO_URL: http://127.0.0.1:4173/
         run: |
-          mkdir -p screenshots
-          npx --yes playwright@1.58.2 screenshot --browser chromium --wait-for-timeout 2500 --viewport-size "1440,900" --full-page http://127.0.0.1:4173/ screenshots/desktop.png
-          npx --yes playwright@1.58.2 screenshot --browser chromium --wait-for-timeout 2500 --viewport-size "390,844" --full-page http://127.0.0.1:4173/ screenshots/mobile.png
-          test -s screenshots/desktop.png
-          test -s screenshots/mobile.png
+          node scripts/contact-check.cjs
+          node scripts/visual-check.cjs
+          test -s screenshots/accueil-1536x864.png
+          test -s screenshots/accueil-1440x900.png
+          test -s screenshots/accueil-390x844.png
       - name: Save screenshots for review
         uses: actions/upload-artifact@v4
         with:
           name: portfolio-v2-browser-screenshots
-          path: cyber-portofolio/screenshots/
+          path: |
+            cyber-portofolio/screenshots/
+            cyber-portofolio/test-results/*.json
           retention-days: 7

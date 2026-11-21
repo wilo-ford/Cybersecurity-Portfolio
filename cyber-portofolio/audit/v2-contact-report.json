@@ -1,0 +1,23 @@
+{
+  "target": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev/",
+  "passed": true,
+  "email": "awalabgr@gmail.com",
+  "phone": "+2290167544610",
+  "whatsapp": "2290167544610",
+  "labelledContactCards": 3,
+  "emptyAndWhitespaceRejected": true,
+  "unicodeAndSpecialCharactersPreserved": true,
+  "correctWhatsAppDestination": true,
+  "popupHandoffIntercepted": true,
+  "fallbackLinkMatches": true,
+  "noMessageSent": true,
+  "viewports": [
+    320,
+    390,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "errors": []
+}

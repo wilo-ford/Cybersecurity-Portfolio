@@ -1,173 +1,115 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 
-// Lazy-loaded, capped WebGL enhancement. The CSS crystal remains the fallback.
+// Progressive enhancement: no WebGL download or work in the default mobile mode.
 export default function CrystalWebGL({ open, paused, onUnavailable }) {
-  const mount = useRef(null);
+  const mount = useRef(null), controls = useRef({ open, paused }), wake = useRef(() => {});
+  useEffect(() => { controls.current = { open, paused }; wake.current(); }, [open, paused]);
   useEffect(() => {
     const host = mount.current;
-    if (!host) return;
     let renderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: 'low-power' });
-    } catch {
-      onUnavailable?.();
-      return;
+    // Retain the last image when paused; costs one small capped drawing buffer.
+    try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true, powerPreference: 'low-power' }); }
+    catch { onUnavailable?.(); return; }
+    const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(36, 1, .1, 40);
+    camera.position.set(0, .4, 8.5); camera.lookAt(0, -.25, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
+    const pmrem = new THREE.PMREMGenerator(renderer), room = new RoomEnvironment();
+    const environment = pmrem.fromScene(room, .04); scene.environment = environment.texture;scene.environmentIntensity=.45;
+    room.dispose(); pmrem.dispose();
+    scene.add(new THREE.HemisphereLight(0x70caff, 0x03102f, .8));
+    const light = new THREE.DirectionalLight(0x8ccfff, 2); light.position.set(-3, 4, 3); scene.add(light);
+    const blue = new THREE.PointLight(0x007dff, 24, 12); blue.position.set(1, -1, 2); scene.add(blue);
+    const crystal = new THREE.Group(); scene.add(crystal); crystal.rotation.z = -.32;crystal.rotation.y=.5;crystal.scale.x=1.12;
+    const tips = [new THREE.Vector3(0,1.65,0), new THREE.Vector3(0,-1.65,0)];
+    const belt = [new THREE.Vector3(1.3,0,0),new THREE.Vector3(0,0,1.3),new THREE.Vector3(-1.3,0,0),new THREE.Vector3(0,0,-1.3)];
+    const facets = [];
+    for (let half=0; half<2; half++) for (let i=0; i<4; i++) {
+      const vertices = half ? [tips[half],belt[(i+1)%4],belt[i]] : [tips[half],belt[i],belt[(i+1)%4]];
+      const center = vertices.reduce((v,p)=>v.add(p),new THREE.Vector3()).multiplyScalar(1/3);
+      const normal = new THREE.Vector3().crossVectors(vertices[1].clone().sub(vertices[0]),vertices[2].clone().sub(vertices[0])).normalize();
+      if (normal.dot(center)<0) normal.negate();
+      const localVertices=vertices.map(p=>p.clone().sub(center));
+      const geometry = new THREE.BufferGeometry().setFromPoints(localVertices); geometry.computeVertexNormals();
+      geometry.setAttribute('color',new THREE.Float32BufferAttribute([.38,.65,1,.9,.98,1,.12,.36,1],3));
+      const material = new THREE.MeshPhysicalMaterial({color:i%2?0x287cff:0x5aafff,vertexColors:true,emissive:0x0049e0,emissiveIntensity:.35,metalness:.3,roughness:.06,transparent:true,opacity:i%2?.25:.38,transmission:0,thickness:.4,ior:1.46,clearcoat:1,side:THREE.DoubleSide,depthWrite:false,envMapIntensity:.7});
+      const group = new THREE.Group(); group.position.copy(center);
+      group.add(new THREE.Mesh(geometry,material));
+      const sheen=new THREE.BufferGeometry().setFromPoints([localVertices[0],localVertices[0].clone().lerp(localVertices[1],.12),localVertices[0].clone().lerp(localVertices[2],.9)].map(p=>p.clone().addScaledVector(normal,.005)));
+      group.add(new THREE.Mesh(sheen,new THREE.MeshBasicMaterial({color:i%2?0x1e64ff:0x91dfff,transparent:true,opacity:i%2?.18:.36,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide})));
+      group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geometry),new THREE.LineBasicMaterial({color:0x4eabff,transparent:true,opacity:.95})));
+      crystal.add(group); facets.push({group,center,normal,sign:half?-1:1});
     }
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(34, 1, .1, 100);
-    camera.position.set(0, .3, 8.6);
-    const crystal = new THREE.Group();
-    scene.add(crystal);
-    const geometry = new THREE.OctahedronGeometry(1.65, 0);
-    const glass = new THREE.MeshPhysicalMaterial({
-      color: 0x9bdfff, transparent: true, opacity: .58, roughness: .13,
-      metalness: .12, transmission: .15, clearcoat: 1, clearcoatRoughness: .1,
-      flatShading: true, side: THREE.DoubleSide, depthWrite: false
+    const circuitry = new THREE.Group(); crystal.add(circuitry);
+    const traceMat = new THREE.LineBasicMaterial({color:0x22d5ff,transparent:true,opacity:.85});
+    for (let i=0;i<14;i++) {
+      const side=i%2?1:-1,x=side*(.07+(i%7)*.1),y=.92-(i%7)*.15;
+      const points=[[x,y,.28],[x,y-.42,.42],[x+side*.18,y-.6,.3],[x+side*.18,-.8+(i%4)*.13,.12]].map(p=>new THREE.Vector3(...p));
+      circuitry.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),traceMat));
+      const dot=new THREE.Mesh(new THREE.SphereGeometry(.022,6,4),new THREE.MeshBasicMaterial({color:0xcaffff})); dot.position.copy(points[0]);circuitry.add(dot);
+    }
+    const network=new THREE.Group();crystal.add(network);
+    const positions=[new THREE.Vector3(0,0,0)];
+    for(let i=0;i<9;i++){const a=i*Math.PI*2/9;positions.push(new THREE.Vector3(Math.cos(a)*1.05,Math.sin(a)*1.12,Math.sin(a*3)*.6));}
+    const segments=[];
+    positions.forEach((p,i)=>{
+      const dot=new THREE.Mesh(new THREE.SphereGeometry(i?.045:.095,10,8),new THREE.MeshBasicMaterial({color:i?0x79e5ff:0xffffff}));dot.position.copy(p);network.add(dot);
+      if(i)segments.push(...p.toArray(),0,0,0,...p.toArray(),...positions[i===9?1:i+1].toArray());
     });
-    const solid = new THREE.Mesh(geometry, glass);
-    crystal.add(solid);
-    const edges = new THREE.LineSegments(
-      new THREE.EdgesGeometry(geometry),
-      new THREE.LineBasicMaterial({ color: 0xd8f5ff, transparent: true, opacity: .85 })
-    );
-    crystal.add(edges);
-    // Illuminated circuitry is attached to the rotating crystal.
-    const traces = [];
-    const circuitPoints = [
-      [[0,1.2,.72],[0,.82,1.08],[.28,.82,1.08],[.28,.43,1.38]],
-      [[-.62,.7,.72],[-.34,.5,1.18],[-.34,.1,1.42],[0,.1,1.58]],
-      [[.75,.45,.45],[.52,.2,1.03],[.52,-.24,1.05],[.18,-.5,1.12]],
-      [[-.65,-.2,.58],[-.45,-.5,.95],[-.12,-.5,1.1],[-.12,-.95,.7]],
-      [[.12,1.05,.85],[.12,.62,1.27],[-.12,.62,1.27],[-.12,.35,1.44]]
-    ];
-    const traceMat = new THREE.LineBasicMaterial({ color: 0x1edfff, transparent: true, opacity: .95 });
-    for (const path of circuitPoints) {
-      const vectors = path.map(([x,y,z]) => new THREE.Vector3(x,y,z));
-      const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(vectors), traceMat);
-      crystal.add(line);
-      traces.push(line);
-      const terminal = new THREE.Mesh(new THREE.SphereGeometry(.045,7,7),new THREE.MeshBasicMaterial({color:0x7ffcff}));
-      terminal.position.copy(vectors[vectors.length-1]);
-      crystal.add(terminal);
-      traces.push(terminal);
+    network.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(segments,3)),new THREE.LineBasicMaterial({color:0x37bfff,transparent:true,opacity:.85})));
+    const orbit=new THREE.Group();orbit.rotation.set(.75,.25,-.63);orbit.scale.x=1.16;scene.add(orbit);
+    orbit.add(new THREE.Mesh(new THREE.TorusGeometry(2.02,.035,6,128),new THREE.MeshStandardMaterial({color:0x1666d9,metalness:.8,roughness:.15,emissive:0x0648b8,emissiveIntensity:.8})));
+    orbit.add(new THREE.Mesh(new THREE.RingGeometry(1.96,2.08,128),new THREE.MeshStandardMaterial({color:0x247eff,emissive:0x005bff,emissiveIntensity:.7,metalness:.85,roughness:.15,side:THREE.DoubleSide})));
+    orbit.add(new THREE.Mesh(new THREE.TorusGeometry(2.02,.09,5,128),new THREE.MeshBasicMaterial({color:0x087bff,transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false})));
+    for(const radius of [1.96,2.08])orbit.add(new THREE.Mesh(new THREE.TorusGeometry(radius,.009,4,128),new THREE.MeshBasicMaterial({color:0x80dfff,transparent:true,opacity:.85})));
+    const trails=new THREE.Group();orbit.add(trails);
+    for(let i=0;i<6;i++){
+      const arc=new THREE.Mesh(new THREE.RingGeometry(1.96,2.08,12,1,0,.18),new THREE.MeshBasicMaterial({color:i%2?0xe8ffff:0x24bdff,side:THREE.DoubleSide}));arc.rotation.z=i*Math.PI/3;trails.add(arc);
+      for(let j=1;j<5;j++){const trail=new THREE.Mesh(new THREE.RingGeometry(1.96,2.08,6,1,-j*.085,.08),new THREE.MeshBasicMaterial({color:0x14adff,transparent:true,opacity:(5-j)*.14,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));trail.rotation.z=i*Math.PI/3;trails.add(trail);}
     }
-    const shards = [];
-    const shardGeo = new THREE.TetrahedronGeometry(.46, 0);
-    for (let i = 0; i < 8; i++) {
-      const shard = new THREE.Mesh(shardGeo, glass.clone());
-      shard.material.opacity = .55;
-      shard.position.copy(new THREE.Vector3(Math.cos(i * Math.PI / 4) * .4, Math.sin(i * Math.PI / 4) * .4, 0));
-      crystal.add(shard);
-      shards.push(shard);
+    const pedestal=new THREE.Group();pedestal.position.y=-2.08;pedestal.scale.x=1.16;scene.add(pedestal);
+    const pedestalMat=new THREE.MeshStandardMaterial({color:0x010b21,metalness:.75,roughness:.17,envMapIntensity:.15});
+    pedestal.add(new THREE.Mesh(new THREE.CylinderGeometry(1.87,1.98,.18,64),pedestalMat));
+    const lowerBase=new THREE.Mesh(new THREE.CylinderGeometry(2.06,2.15,.12,64),pedestalMat);lowerBase.position.y=-.16;pedestal.add(lowerBase);
+    const pulseMat=new THREE.MeshBasicMaterial({color:0x10bfff,transparent:true,opacity:.9});
+    for(const radius of [1.55,1.88,2.1]){const ring=new THREE.Mesh(new THREE.TorusGeometry(radius,radius===1.88?.035:.015,4,96),pulseMat);ring.rotation.x=Math.PI/2;ring.position.y=.12;pedestal.add(ring);}
+    const baseHalo=new THREE.Mesh(new THREE.TorusGeometry(1.88,.12,6,96),new THREE.MeshBasicMaterial({color:0x007aff,transparent:true,opacity:.17,blending:THREE.AdditiveBlending,depthWrite:false}));baseHalo.rotation.x=Math.PI/2;baseHalo.position.y=.12;pedestal.add(baseHalo);
+    const glow=new THREE.Mesh(new THREE.CircleGeometry(1.83,64),new THREE.MeshBasicMaterial({color:0x007aff,transparent:true,opacity:.12,side:THREE.DoubleSide,depthWrite:false}));glow.rotation.x=-Math.PI/2;glow.position.y=.1;pedestal.add(glow);
+    const particles=new THREE.Group();scene.add(particles);const coordinates=[];
+    for(let i=0;i<48;i++)coordinates.push(Math.sin(i*32.7)*2.1,Math.cos(i*18.4)*1.9,Math.sin(i*27.1)*1.2);
+    particles.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(coordinates,3)),new THREE.PointsMaterial({color:0x53c7ff,size:.022,transparent:true,opacity:.5,depthWrite:false})));
+    scene.traverse(obj=>{if(obj.material?.isMeshBasicMaterial||obj.material?.isLineBasicMaterial)obj.material.toneMapped=false;});
+    host.appendChild(renderer.domElement);host.dataset.ready='true';renderer.domElement.setAttribute('aria-hidden','true');
+    let frame=0,last=0,time=0,visible=true,disposed=false,openness=0;
+    function schedule(){if(!frame&&visible&&!document.hidden&&!disposed)frame=requestAnimationFrame(render);}
+    function render(now){
+      frame=0;if(!visible||document.hidden||disposed)return;
+      if(now-last<1000/30){schedule();return;}
+      const dt=Math.min((now-last)/1000,.06);last=now;const {open,paused}=controls.current;
+      const target=open?1:0;
+      openness=matchMedia('(prefers-reduced-motion: reduce)').matches?target:THREE.MathUtils.damp(openness,target,5,dt);
+      if(Math.abs(openness-target)<.001)openness=target;
+      crystal.rotation.z=-.32;
+      if(!paused){time+=dt;crystal.rotation.y=.5+time*.14;trails.rotation.z=time*.35;orbit.rotation.y=.25+Math.sin(time*.18)*.13;particles.rotation.y=time*.025;}
+      crystal.position.y=(paused?0:Math.sin(time*.9)*.045)-openness*.06;
+      crystal.scale.set(1.12*(1-openness*.1),1-openness*.1,1-openness*.1);
+      facets.forEach(({group,center,normal,sign})=>{group.position.copy(center).addScaledVector(normal,openness*.75);group.position.y+=sign*openness*.08;group.rotation.y=openness*sign*.36;});
+      circuitry.scale.setScalar(1-openness*.65);circuitry.visible=openness<.85;
+      network.scale.setScalar(.32+openness*.68);network.visible=openness>.01;
+      pulseMat.opacity=.65+(paused?0:Math.sin(time*1.7)*.17);
+      host.dataset.progress=openness.toFixed(3);host.dataset.frames=String(Number(host.dataset.frames||0)+1);renderer.render(scene,camera);
+      if(!paused||openness!==target)schedule();
     }
-    const nodes = new THREE.Group();
-    scene.add(nodes);
-    const points = [];
-    for (let i = 0; i < 7; i++) {
-      const a = i * Math.PI * 2 / 7;
-      points.push(new THREE.Vector3(Math.cos(a) * 1.35, Math.sin(a) * 1.2, Math.sin(a * 2) * .6));
-    }
-    const dotGeo = new THREE.SphereGeometry(.065, 8, 8);
-    const dotMat = new THREE.MeshBasicMaterial({ color: 0xc6f4ff });
-    points.forEach(point => {
-      const dot = new THREE.Mesh(dotGeo, dotMat);
-      dot.position.copy(point);
-      nodes.add(dot);
-    });
-    const segments = [];
-    for (let i = 0; i < points.length; i++) {
-      const next = (i + 1) % points.length;
-      segments.push(...points[i].toArray(), ...points[next].toArray());
-      segments.push(...points[i].toArray(), 0, 0, 0);
-    }
-    const lineGeo = new THREE.BufferGeometry();
-    lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(segments, 3));
-    const lines = new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({ color: 0x8bdfff, transparent: true, opacity: .7 }));
-    nodes.add(lines);
-    const ringGeo = new THREE.TorusGeometry(1.95, .012, 4, 96);
-    const ring = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color: 0xa6e7ff, transparent: true, opacity: .75 }));
-    ring.rotation.x = 1.18;
-    ring.rotation.y = -.24;
-    scene.add(ring);
-    const outerRing = new THREE.Mesh(
-      new THREE.TorusGeometry(2.02,.038,5,112),
-      new THREE.MeshBasicMaterial({color:0x168bff,transparent:true,opacity:.42})
-    );
-    outerRing.rotation.copy(ring.rotation);
-    scene.add(outerRing);
-    const glints = new THREE.Group();
-    scene.add(glints);
-    for (let i=0;i<12;i++) {
-      const a=i*Math.PI/6;
-      const sparkle=new THREE.Mesh(new THREE.SphereGeometry(i%3===0?.038:.018,6,6),new THREE.MeshBasicMaterial({color:i%3===0?0xf4ffff:0x3baaff}));
-      sparkle.position.set(Math.cos(a)*2.01,Math.sin(a)*.78,Math.sin(a)*.45);
-      glints.add(sparkle);
-    }
-    scene.add(new THREE.AmbientLight(0xb2e3ff, 1.7));
-    const key = new THREE.PointLight(0xc5f0ff, 25);
-    key.position.set(-2, 3, 4);
-    scene.add(key);
-    host.appendChild(renderer.domElement);
-    renderer.domElement.setAttribute('aria-hidden', 'true');
-    const resize = () => {
-      const { width, height } = host.getBoundingClientRect();
-      if (!width || !height) return;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.4));
-      renderer.setSize(width, height, false);
-    };
-    const observer = new ResizeObserver(resize);
-    observer.observe(host);
-    resize();
-    let frame = 0;
-    let last = 0;
-    let visible = true;
-    let stopped = false;
-    const intersection = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; });
-    intersection.observe(host);
-    let openness = open ? 1 : 0;
-    const animate = (now) => {
-      if (stopped) return;
-      frame = requestAnimationFrame(animate);
-      if (!visible || document.hidden || now - last < 1000 / 24) return;
-      last = now;
-      const target = host.dataset.open === 'true' ? 1 : 0;
-      openness += (target - openness) * .075;
-      const still = host.dataset.paused === 'true';
-      if (!still) {
-        crystal.rotation.y += .005;
-        ring.rotation.z += .002;
-        outerRing.rotation.z += .002;
-        glints.rotation.z += .001;
-        nodes.rotation.y += .002;
-      }
-      solid.scale.setScalar(1 - openness * .55);
-      edges.scale.setScalar(1 - openness * .55);
-      solid.material.opacity = .58 * (1 - openness * .85);
-      edges.material.opacity = .85 * (1 - openness * .8);
-      traces.forEach(trace => { trace.visible = openness < .9; trace.scale.setScalar(Math.max(.001, 1 - openness * .55)); });
-      shards.forEach((shard, i) => {
-        const a = i * Math.PI / 4;
-        shard.position.set(Math.cos(a) * (0.3 + openness * 1.45), Math.sin(a) * (0.3 + openness * 1.35), Math.sin(a * 2) * openness * .6);
-        shard.rotation.y = openness * (i + 1) * .35;
-        shard.scale.setScalar(.001 + openness * .95);
-      });
-      nodes.scale.setScalar(.001 + openness * .999);
-      nodes.visible = openness > .02;
-      renderer.render(scene, camera);
-    };
-    frame = requestAnimationFrame(animate);
-    return () => {
-      stopped = true;
-      cancelAnimationFrame(frame);
-      intersection.disconnect();
-      observer.disconnect();
-      host.removeChild(renderer.domElement);
-      scene.traverse(obj => { if (obj.geometry) obj.geometry.dispose(); if (obj.material) { const materials = Array.isArray(obj.material) ? obj.material : [obj.material]; materials.forEach(mat => mat.dispose()); } });
-      renderer.dispose();
-    };
+    wake.current=schedule;
+    const resize=()=>{const {width,height}=host.getBoundingClientRect();if(!width||!height)return;camera.aspect=width/height;camera.updateProjectionMatrix();renderer.setSize(width,height,false);schedule();};
+    const observer=new ResizeObserver(resize);observer.observe(host);resize();
+    const intersection=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)schedule();else{cancelAnimationFrame(frame);frame=0;}},{threshold:.01});intersection.observe(host);
+    const visibility=()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;}else schedule();};document.addEventListener('visibilitychange',visibility);
+    const contextLost=event=>{event.preventDefault();onUnavailable?.();};renderer.domElement.addEventListener('webglcontextlost',contextLost);schedule();
+    return()=>{disposed=true;wake.current=()=>{};cancelAnimationFrame(frame);observer.disconnect();intersection.disconnect();document.removeEventListener('visibilitychange',visibility);renderer.domElement.removeEventListener('webglcontextlost',contextLost);host.removeChild(renderer.domElement);const geometries=new Set(),materials=new Set();scene.traverse(obj=>{if(obj.geometry)geometries.add(obj.geometry);if(obj.material)materials.add(obj.material);});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());environment.dispose();renderer.dispose();};
   }, []);
-  return <div ref={mount} className="v2-webgl" data-open={String(open)} data-paused={String(paused)} aria-hidden="true" />;
+  return <div ref={mount} className="v2-webgl" data-open={String(open)} data-paused={String(paused)} aria-hidden="true"/>;
 }
