@@ -1,9 +1,21 @@
 import { lazy, Suspense, useState } from 'react';
 const CrystalWebGL = lazy(() => import('./CrystalWebGL.jsx'));
-import { ArrowDown, ArrowRight, ArrowUpRight, Download, Pause, Play, Github, Linkedin, Mail, Crosshair, Layers3, ShieldCheck } from 'lucide-react';
+import { ArrowDown, ArrowRight, ArrowUpRight, Download, Pause, Play, Github, Linkedin, Mail, Crosshair, Layers3, ShieldCheck, Network, Code2, Eye, Activity, Box, Globe2, Terminal, Container, Shield, Cpu } from 'lucide-react';
 import { profile } from './content';
 import './v2-hero.css';
 
+const skillTiles = [
+  { label: 'Linux', icon: Terminal },
+  { label: 'Réseaux', icon: Network },
+  { label: 'Python', icon: Code2 },
+  { label: 'Nmap', icon: Eye },
+  { label: 'Wireshark', icon: Activity },
+  { label: 'Burp Suite', icon: Shield },
+  { label: 'Docker', icon: Container },
+  { label: 'OWASP', icon: Globe2 },
+  { label: 'Virtualisation', icon: Box },
+  { label: 'Bash', icon: Cpu }
+];
 const paths = [
   { title: 'Pentest', sub: 'Identifier et exploiter les vulnérabilités', href: '#projets', icon: Crosshair },
   { title: 'SOC', sub: 'Surveiller, détecter et réagir aux menaces', href: '#competences', icon: Layers3 },
@@ -44,6 +56,13 @@ export default function V2Hero({ lite, setLite, paused, setPaused }) {
       </div>
     </div>
     <div className="v2-domains">{paths.map(item=><a className="v2-domain" href={item.href} key={item.title}><span className="v2-domain-icon"><item.icon size={42} strokeWidth={1.45}/></span><span><strong>{item.title}</strong><small>{item.sub}</small></span><ArrowUpRight size={24}/></a>)}</div>
+    <div className="v2-reference-strip">
+      <div className="v2-about-preview">
+        <a href="#a-propos" className="v2-monogram-card" aria-label="En savoir plus sur Mohamed ABOGOURIN"><span>MA<b>.</b></span></a>
+        <div className="v2-about-text"><p className="v2-strip-label">À PROPOS DE MOI</p><p>Étudiant en L3 Informatique (Systèmes d’Information), passionné par la cybersécurité, le pentest et les opérations SOC. Je me forme continuellement, réalise des projets pratiques et vise un stage pour renforcer mon expérience terrain.</p><a href="#a-propos" className="v2-strip-link">En savoir plus <ArrowRight size={17}/></a></div>
+      </div>
+      <div className="v2-skills-preview"><p className="v2-strip-label">COMPÉTENCES CLÉS</p><div className="v2-skill-tiles">{skillTiles.map(({label,icon:Icon})=><a key={label} href="#competences" className="v2-skill-tile"><Icon size={27} strokeWidth={1.6}/><span>{label}</span></a>)}</div></div>
+    </div>
     <div className="v2-bottom"><a href="#a-propos"><ArrowDown size={14}/> DÉCOUVRIR MON PARCOURS</a><div><button onClick={()=>setLite(!lite)}>{lite ? 'Mode détaillé' : 'Mode léger'}</button><button onClick={()=>setPaused(!paused)}>{paused ? <Play size={13}/> : <Pause size={13}/>} {paused ? 'Animer' : 'Pause'}</button></div></div>
   </section>;
 }
