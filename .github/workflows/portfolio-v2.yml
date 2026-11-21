@@ -42,3 +42,50 @@ jobs:
           test -s dist/sitemap.xml
           test -s dist/projets/bandit/index.html
           grep -q 'ABOGOURIN' dist/index.html
+
+  browser-preview:
+    runs-on: ubuntu-latest
+    needs: verify
+    defaults:
+      run:
+        working-directory: cyber-portofolio
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '11.25.0'
+          run_install: false
+      - name: Install and build
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+      - name: Install Chromium for screenshots
+        run: npx --yes playwright@1.58.2 install chromium --with-deps
+      - name: Start local preview
+        run: |
+          pnpm preview --host 127.0.0.1 > /tmp/portfolio-v2-preview.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/portfolio-v2-preview.log
+          exit 1
+      - name: Capture desktop and mobile screenshots
+        run: |
+          mkdir -p screenshots
+          npx --yes playwright@1.58.2 screenshot --browser chromium --wait-for-timeout 2500 --viewport-size "1440,900" --full-page http://127.0.0.1:4173/ screenshots/desktop.png
+          npx --yes playwright@1.58.2 screenshot --browser chromium --wait-for-timeout 2500 --viewport-size "390,844" --full-page http://127.0.0.1:4173/ screenshots/mobile.png
+          test -s screenshots/desktop.png
+          test -s screenshots/mobile.png
+      - name: Save screenshots for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-v2-browser-screenshots
+          path: cyber-portofolio/screenshots/
+          retention-days: 7
