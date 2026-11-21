@@ -52,3 +52,24 @@
 @media(min-width:1000px){#contenu>#a-propos{padding-top:35px;padding-bottom:35px}.skills-section{padding-block:42px}.featured-projects{gap:22px}}
 @media(max-width:950px){.site-header .header-name{display:none}.v2-hero{padding-top:100px}.v2-hero-main{grid-template-columns:1fr}.v2-copy{max-width:680px}.v2-art{min-height:345px}.v2-crystal-button{height:345px}.v2-domains{gap:12px}.v2-domain{padding:13px;gap:10px}.v2-domain-icon{width:47px;padding-right:7px}.v2-domain-icon svg{width:32px}.v2-domain strong{font-size:22px}.v2-domain small{font-size:11px}.v2-arch-center{left:37%;width:42%}}
 @media(max-width:650px){.site-header .header-inner{padding-inline:16px}.v2-hero{padding:100px 17px 20px}.v2-copy h1 span{font-size:clamp(57px,14vw,76px)}.v2-copy h1 em{font-size:clamp(47px,11vw,70px)}.v2-role{font-size:15px}.v2-art{min-height:295px}.v2-crystal-button{height:295px}.v2-domains{grid-template-columns:1fr;gap:14px}.v2-domain{min-height:86px;padding:12px 19px}.v2-domain-icon{width:65px}.v2-domain strong{font-size:25px}.v2-domain small{font-size:13px}.v2-arch-center{left:33%;width:65%}.v2-arch-right{right:-35%;width:65%}.v2-arch-left{left:-45%;width:65%}}
+
+/* Lower half of the approved 1536x864 reference: monogram, bio, ten skill tiles. */
+.v2-reference-strip{position:relative;z-index:2;max-width:1400px;margin:22px auto 0;display:grid;grid-template-columns:1.18fr 1fr;gap:32px;padding:24px 0 20px;border-top:1px solid #b1d9ff38;border-bottom:1px solid #b1d9ff38;background:linear-gradient(90deg,#020b1a80,#020b1aab)}
+.v2-about-preview{display:grid;grid-template-columns:235px minmax(0,1fr);gap:30px;align-items:center;padding-right:22px;border-right:1px solid #b7cfff80}
+.v2-monogram-card{position:relative;display:grid;place-items:center;min-height:170px;overflow:hidden;border:1px solid #a7d7ff9c;border-radius:19px;background:radial-gradient(ellipse at 75% 20%,#1760bc57,transparent 50%),linear-gradient(145deg,#07162c,#020d21);box-shadow:inset 0 -6px 12px #168cff82,0 0 16px #248cff42;text-decoration:none}
+.v2-monogram-card:after{content:"";position:absolute;width:130%;height:65%;border:2px solid #228affaa;border-radius:50%;transform:rotate(-22deg);box-shadow:0 0 17px #1e9aff;bottom:-35%;left:-15%}
+.v2-monogram-card span{font:italic 86px/1 Georgia,serif;color:#f6f7ff;z-index:1;text-shadow:0 0 15px #b9dcff5c}
+.v2-monogram-card b{color:#30baff;font-weight:400}
+.v2-strip-label{font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.35em;color:#f0f5ff;margin:0 0 14px}
+.v2-strip-label:before{content:"";display:inline-block;width:26px;height:2px;background:#3c9dff;vertical-align:middle;margin-right:14px}
+.v2-about-text>p:nth-child(2){font:17px/1.45 Georgia,serif;color:#f0edf3;margin:0 0 15px}
+.v2-strip-link{display:inline-flex;align-items:center;gap:14px;border:1px solid #8eb9ff;border-radius:24px;padding:8px 25px;color:#f6faff;font:14px Georgia,serif;text-decoration:none;background:#020d20bb}
+.v2-skills-preview{padding-left:2px}
+.v2-skill-tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.v2-skill-tile{min-height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#eff7ff;text-decoration:none;background:linear-gradient(155deg,#07152a,#0c274d 75%,#0e4482);border:1px solid #5d98e45e;border-radius:13px;box-shadow:inset 0 -3px 8px #1685ff42}
+.v2-skill-tile svg{color:#a4d6ff;filter:drop-shadow(0 0 4px #1689ff85)}
+.v2-skill-tile span{font:12px/1.2 Georgia,serif;text-align:center}
+.v2-skill-tile:hover,.v2-skill-tile:focus-visible{border-color:#b5e5ff;background:#14396c}
+@media(max-width:1100px){.v2-reference-strip{grid-template-columns:1fr;gap:22px}.v2-about-preview{border-right:0;border-bottom:1px solid #a5d7ff4b;padding:0 0 22px}.v2-skills-preview{padding:0 0 12px}}
+@media(max-width:650px){.v2-reference-strip{padding-top:20px}.v2-about-preview{grid-template-columns:105px 1fr;gap:15px}.v2-monogram-card{min-height:115px;border-radius:13px}.v2-monogram-card span{font-size:46px}.v2-about-text>p:nth-child(2){font-size:13px}.v2-strip-label{font-size:9px;letter-spacing:.2em}.v2-strip-label:before{width:14px;margin-right:6px}.v2-skill-tiles{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}.v2-skill-tile{min-height:58px;border-radius:8px}.v2-skill-tile svg{width:21px;height:21px}.v2-skill-tile span{font-size:9px}}
+@media(max-width:380px){.v2-skill-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
