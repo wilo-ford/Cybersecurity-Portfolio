@@ -9,7 +9,7 @@
 - Sortie originale : `exec-ea01fc37-932c-46b7-abc7-5828d5021aa1.png` ; conversion WebP qualité 88, sans retouche de composition.
 - Tous les textes, liens, cartes, pictogrammes et éléments du cristal sont des composants React, CSS, SVG et Three.js indépendants du décor.
 - L’architecture utilise un fond photographique avec parallaxe limitée. Ses arches ne sont pas des modèles 3D. Le sol conserve les reflets architecturaux de cette image, complétés par une lueur locale sous le socle.
-- Police locale : Cormorant Garamond italique, Google Fonts, licence SIL Open Font License dans `public/fonts/OFL.txt`. Sous-ensemble latin officiel WOFF2, 39 260 octets, récupéré depuis fonts.gstatic.com (Cormorant Garamond v21). Aucun appel à un CDN de polices à l’exécution.
+- Typographie actuelle : Tinos, quatre styles locaux WOFF2 couvrant le français, environ 86 Ko au total, depuis Google Fonts v26. Licence SIL Open Font License dans `public/fonts/Tinos-OFL.txt` ([source officielle](https://github.com/googlefonts/tinos/blob/main/OFL.txt)). Les fichiers ont été convertis et limités aux caractères français/latins et signes utilisés, sans modification des contours. Le nom emploie le gras italique, complété par des courbes SVG. Les polices Tinos, Bodoni et Cormorant ont été comparées à l’image avant ce choix. La fonte exacte de l’image n’est pas une ressource fournie ni une identification certaine. Aucun appel à un CDN de polices à l’exécution.
 
 ## Prompt exact de l’asset utilisé
 

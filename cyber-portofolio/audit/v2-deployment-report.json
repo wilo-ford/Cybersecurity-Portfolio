@@ -1,6 +1,6 @@
 {
   "origin": "https://mohamed-abogourin-portfolio-v2-preview.awalabgr.workers.dev",
-  "checkedAt": "2026-11-21T14:38:46.966Z",
+  "checkedAt": "2026-11-21T15:40:00.013Z",
   "passed": true,
   "checks": [
     {
@@ -18,31 +18,31 @@
       "contentType": "image/webp"
     },
     {
-      "path": "/assets/CrystalWebGL-B75YBIOt.js",
+      "path": "/assets/CrystalWebGL-CyXKOQG9.js",
       "status": 200,
-      "bytes": 9366,
-      "verifiedHash": "9897a29b3afc15cd69ea1fbb3b29474c",
+      "bytes": 16356,
+      "verifiedHash": "c384a791513507bbe8647f474a626c93",
       "contentType": "application/javascript"
     },
     {
-      "path": "/assets/index-Bl0nnRi0.css",
+      "path": "/assets/index-ChQ11aq0.js",
       "status": 200,
-      "bytes": 95457,
-      "verifiedHash": "ae0cd6c307ddec56e24b48a3073bbcd6",
+      "bytes": 282471,
+      "verifiedHash": "a3a387726bf37e0544d5521ac01fd384",
+      "contentType": "application/javascript"
+    },
+    {
+      "path": "/assets/index-CJZS049i.css",
+      "status": 200,
+      "bytes": 100474,
+      "verifiedHash": "fda6a9e9ad566269b7ae6ec8ceef7065",
       "contentType": "text/css"
     },
     {
-      "path": "/assets/index-CW1AjdAO.js",
+      "path": "/assets/three-D2kGMnjl.js",
       "status": 200,
-      "bytes": 279029,
-      "verifiedHash": "21449a4e736c505b4ff9c9d61aa2fced",
-      "contentType": "application/javascript"
-    },
-    {
-      "path": "/assets/three-H31ymkA3.js",
-      "status": 200,
-      "bytes": 510268,
-      "verifiedHash": "dcf1cd696742a515d64a3cf5a9139062",
+      "bytes": 530567,
+      "verifiedHash": "3806c61b02679f3b56097f47248b6e2b",
       "contentType": "application/javascript"
     },
     {
@@ -81,66 +81,101 @@
       "contentType": "text/plain"
     },
     {
+      "path": "/fonts/tinos-bold-italic.woff2",
+      "status": 200,
+      "bytes": 21696,
+      "verifiedHash": "ba408c30bf0a14b5268e4d53624ff589",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/tinos-bold.woff2",
+      "status": 200,
+      "bytes": 21720,
+      "verifiedHash": "4823022ab2c053b57797af5b9d3e1d7e",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/tinos-italic.woff2",
+      "status": 200,
+      "bytes": 21540,
+      "verifiedHash": "9b01c513d4bec53539512c8b54e5d802",
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/fonts/Tinos-OFL.txt",
+      "status": 200,
+      "bytes": 4383,
+      "verifiedHash": "cb3382d4643e8b02c12e322c220a3c76",
+      "contentType": "text/plain"
+    },
+    {
+      "path": "/fonts/tinos.woff2",
+      "status": 200,
+      "bytes": 21196,
+      "verifiedHash": "2284a53f01baf1a1844e21eabcde7ab9",
+      "contentType": "font/woff2"
+    },
+    {
       "path": "/index.html",
       "status": 200,
-      "bytes": 59173,
-      "verifiedHash": "2d3aba455edff2183c24a86338bfbc1a",
+      "bytes": 66440,
+      "verifiedHash": "0c189888d58a289528a96e79f1bd0cac",
       "contentType": "text/html"
     },
     {
       "path": "/partage-portfolio.png",
       "status": 200,
-      "bytes": 828563,
-      "verifiedHash": "e885859472c6aedc40fd40232d11ddab",
+      "bytes": 838461,
+      "verifiedHash": "7dfff17ca24ba6ce4c014733127ec808",
       "contentType": "image/png"
     },
     {
       "path": "/projets/bandit/index.html",
       "status": 200,
-      "bytes": 11944,
-      "verifiedHash": "4a64e78973f26a0c418954ab304d2903",
+      "bytes": 12029,
+      "verifiedHash": "8f4d47cb08ac0e674bee30e5de093d8a",
       "contentType": "text/html"
     },
     {
       "path": "/projets/docker/index.html",
       "status": 200,
-      "bytes": 7404,
-      "verifiedHash": "09fdf25e4bdb3d43cb297cce7032fe09",
+      "bytes": 7489,
+      "verifiedHash": "60aa4f832c0d9126d602b16182039e9b",
       "contentType": "text/html"
     },
     {
       "path": "/projets/monitoring/index.html",
       "status": 200,
-      "bytes": 7204,
-      "verifiedHash": "591f8cb2e2e6655b3df3ec13f12bc856",
+      "bytes": 7289,
+      "verifiedHash": "3828cff18a63863a70b7a1b4aaed5b90",
       "contentType": "text/html"
     },
     {
       "path": "/projets/pentest-lab/index.html",
       "status": 200,
-      "bytes": 7381,
-      "verifiedHash": "c320ef03791579e910b756c0479bfb07",
+      "bytes": 7466,
+      "verifiedHash": "877b4e601583c041d2ae0f24feadd0ac",
       "contentType": "text/html"
     },
     {
       "path": "/projets/sahelsound/index.html",
       "status": 200,
-      "bytes": 7184,
-      "verifiedHash": "0d52c93ffbe00a5c3826aa44bc1a9c7a",
+      "bytes": 7269,
+      "verifiedHash": "cccebc1b035de972eecd63f3b06508d1",
       "contentType": "text/html"
     },
     {
       "path": "/projets/web/index.html",
       "status": 200,
-      "bytes": 7579,
-      "verifiedHash": "3be4cfa4a3771a0a99c1e2fb8d2f885b",
+      "bytes": 7664,
+      "verifiedHash": "e6442629fbb5be44ad4fca48f7f96168",
       "contentType": "text/html"
     },
     {
       "path": "/projets/windows-server/index.html",
       "status": 200,
-      "bytes": 8075,
-      "verifiedHash": "f46b6fa9da5f0a1d42a3f7338af5e646",
+      "bytes": 8160,
+      "verifiedHash": "a94de8be2eba42cba3fc4ffbab9a8177",
       "contentType": "text/html"
     },
     {

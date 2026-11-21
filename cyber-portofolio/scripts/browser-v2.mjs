@@ -19,7 +19,7 @@ try {
   assert.equal(await page.locator('.v2-skill-tile').count(),10);assert.equal(await page.locator('.v2-domain-motion').count(),3);
   for(const anchor of await page.locator('a[href^="#"]').all()){const id=(await anchor.getAttribute('href')).slice(1);assert.equal(await page.locator(`[id="${id}"]`).count(),1,'Anchor target '+id);}
   const crystal=page.locator('.v2-crystal-button');await crystal.focus();await page.keyboard.press('Enter');assert.equal(await crystal.getAttribute('aria-expanded'),'true');
-  assert.match(await page.locator('#crystal-status').innerText(),/Réseau révélé/);await page.keyboard.press('Space');assert.equal(await crystal.getAttribute('aria-expanded'),'false');
+  assert.match(await page.locator('#crystal-status').innerText(),/Explorez mon univers cybersécurité/);assert.match(await page.locator('#crystal-status').innerText(),/Réseau révélé/);await page.keyboard.press('Space');assert.equal(await crystal.getAttribute('aria-expanded'),'false');
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.motion),'paused');
   if(width===390){assert.ok(!requests.some(url=>/\/three-/.test(url)),'Mobile does not load Three');assert.equal(await page.locator('canvas').count(),0);await page.getByRole('button',{name:'Ouvrir le menu',exact:true}).click();await page.locator('#mobile-nav').getByRole('link',{name:'Projets',exact:true}).click();assert.equal(await page.getByRole('button',{name:'Ouvrir le menu',exact:true}).getAttribute('aria-expanded'),'false');}
   for(const w of width===390?[320,390,768,1024,1280]:[width]){await page.setViewportSize({width:w,height});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'No overflow at '+w);}

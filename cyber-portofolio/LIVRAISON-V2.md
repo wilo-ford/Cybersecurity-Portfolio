@@ -22,7 +22,9 @@ L’interface reprend la composition de la référence finale : arches de pierre
 
 La palette V2 s’applique également aux schémas, terminaux, voyants, aperçus et fiches de tous les projets : bleu nuit, bleu glacé et bleu lumineux. Les anciens accents verts ont été retirés. Le bloc de documentation et le contact WhatsApp emploient aussi cette palette. Les couleurs communes sont regroupées dans `src/v2-theme.css`.
 
-Le cristal Three.js comporte huit facettes transparentes distinctes avec reflets d’environnement et traits spéculaires, des circuits internes, des particules, un anneau à ruban et traînées indépendant, un socle à plusieurs anneaux lumineux. Au clic, Entrée ou Espace, les facettes s’écartent et dévoilent un réseau de dix nœuds. Le second clic referme la géométrie. Le bouton expose son état et un statut textuel est annoncé.
+Le cristal Three.js comporte huit fragments de verre en prismes triangulaires, avec reflets d’environnement, biseaux lumineux, circuits fins attachés aux faces, particules et anneau orbital diagonal indépendant. Le socle comporte trois niveaux métalliques et un dessus bleu nuit. Au clic, Entrée ou Espace, les fragments s’écartent et tournent autour d’un réseau volumétrique à treize nœuds. Le message « Explorez mon univers cybersécurité » apparaît et les cartes Pentest, SOC et Sécurité SI s’illuminent comme entrées vers les compétences et projets. Le second clic referme la géométrie. La transition dure 1,1 seconde indépendamment du nombre d’images affichées. Le bouton expose son état et un statut textuel est annoncé.
+
+La typographie a été reprise après comparaison côte à côte avec l’image : Tinos en romain, italique et gras, avec le nom en gras italique et des volutes SVG dessinées autour du A et sous le nom. La maquette étant une image, la famille d’origine n’est pas identifiée avec certitude ; les formes et proportions sont reconstituées. Le mode léger utilise désormais un cristal vectoriel à fragments et circuits, également interactif, sans remplacer une image par une autre.
 
 Les cartes animent des nœuds, un signal et des couches protectrices. Les cartes et boutons répondent au survol et au focus. Le monogramme a un halo lent ; les compétences, projets, notes et éléments de parcours apparaissent au scroll. La navigation suit la section active. La parallaxe du décor est limitée à quelques pixels.
 
@@ -35,7 +37,7 @@ Les sept sections, sept fiches projet partageables, CV, coordonnées et quatre w
 - Mode léger CSS interactif, également utilisé si WebGL échoue ; changement de mode mémorisé. Animations CSS du hero suspendues hors écran.
 - Préférence de mouvement réduit prise en compte, contrôle Pause/Animer, focus visibles, lien d’évitement, menu clavier et modale avec restitution du focus.
 - HTML pré-rendu : accueil et sept fiches consultables sans JavaScript. Les interactions 3D et le formulaire nécessitent JavaScript.
-- Police locale WOFF2 latine ~39 Ko ; décor WebP ~107 Ko. Aucun CDN à l’exécution.
+- Quatre styles Tinos locaux WOFF2 couvrant le français : environ 86 Ko au total ; décor WebP ~107 Ko. Aucun CDN à l’exécution.
 
 ## Vérifications et reproduction
 
@@ -69,7 +71,7 @@ Contrôles réalisés :
 
 Les rapports JSON locaux sont dans `test-results/` ; GitHub Actions les joint à l’artefact des captures. Les anciens scripts `browser-check.cjs`, `motion-check.cjs` et `improvements-check.cjs` restent des références V1, avec des sélecteurs de globe/terminal ; la suite V2 exécutée par la CI est `browser-v2.mjs`.
 
-Le contrôle d’intégrité distant vérifie le hash et les en-têtes des 22 fichiers publiés. Les mesures mobiles simulées (CPU ×4, débit 1,6 Mbit/s, latence ajoutée 150 ms, cache navigateur désactivé) sont conservées dans `audit/v2-performance-after.json`. Le chargement initial transfère environ **275 Ko**, sans Three.js, contre environ 447 Ko avant l’allègement de la police. Le fichier de police passe de 210 140 à 39 260 octets. Deux observations LCP sont disponibles (1,87 s et 2,62 s) ; le premier passage n’a pas exposé de mesure de peinture et reste explicitement marqué indisponible. Ces observations de laboratoire ne constituent pas une validation matérielle ni une promesse de temps de chargement.
+Le contrôle d’intégrité distant vérifie le hash et les en-têtes de tous les fichiers publiés. Les mesures mobiles simulées historiques (CPU ×4, débit 1,6 Mbit/s, latence ajoutée 150 ms, cache navigateur désactivé) sont conservées dans `audit/v2-performance-after.json`. Elles concernaient la première version typographique Cormorant et ne décrivent pas les nouveaux fichiers Tinos. Aucun résultat LCP de cette ancienne version n’est présenté comme une mesure de la version actuelle. Le cristal et les polices doivent aussi être essayés sur les appareils physiques ciblés avant toute promesse de fluidité matérielle.
 
 Vite signale un chunk Three.js supérieur à 500 Ko non compressé (~131 Ko gzip). Il est différé et absent du téléchargement mobile par défaut. Il ne s’agit pas d’un échec de compilation.
 
@@ -78,6 +80,7 @@ Vite signale un chunk Three.js supérieur à 500 Ko non compressé (~131 Ko gzip
 - Informations, niveaux, projets, parcours et liens : `src/content.js`.
 - Intro, bandeau et dix tuiles : `src/V2Hero.jsx`.
 - Décor, composition, responsive : `src/v2-reference.css`.
+- Palette des sections et schémas : `src/v2-theme.css` ; polices locales dans `public/fonts/`.
 - Géométrie, matériaux, animation et budgets WebGL : `src/CrystalWebGL.jsx`.
 - CV : remplacer `public/cv-mohamed-abogourin.pdf` en gardant le nom du fichier.
 - Notes du blog : liste dans `src/App.jsx`, liée aux quatre documents réels du dépôt.

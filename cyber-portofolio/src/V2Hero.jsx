@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 const CrystalWebGL = lazy(() => import('./CrystalWebGL.jsx'));
 import { ArrowDown, ArrowRight, ArrowUpRight, Download, Pause, Play, Github, Linkedin, Mail, Crosshair, Layers3, ShieldCheck, Network, Code2, Eye, Activity, Box, Globe2, Terminal, Container, Shield, Cpu } from 'lucide-react';
 import { profile } from './content';
+import CrystalFallback from './CrystalFallback.jsx';
 import './v2-hero.css';
 
 const skillTiles = [
@@ -19,24 +20,12 @@ const skillTiles = [
 const paths = [
   { title: 'Pentest', sub: 'Identifier et exploiter les vulnérabilités', href: '#projets', icon: Crosshair },
   { title: 'SOC', sub: 'Surveiller, détecter et réagir aux menaces', href: '#competences', icon: Layers3 },
-  { title: 'Sécurité SI', sub: 'Renforcer la sécurité des systèmes d’information', href: '#a-propos', icon: ShieldCheck }
+  { title: 'Sécurité SI', sub: 'Renforcer la sécurité des systèmes d’information', href: '#competences', icon: ShieldCheck }
 ];
 function DomainMotion({ index }) {
   return <svg className={'v2-domain-motion motion-' + index} viewBox="0 0 100 65" aria-hidden="true">
     {index === 0 ? <><path d="M10 51L35 10 55 45 80 18 94 53 10 51 80 18M35 10L94 53M55 45L10 51"/>{[[10,51],[35,10],[55,45],[80,18],[94,53]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="2.5" style={{animationDelay:`${i*.4}s`}}/>)}</> : index === 1 ? <>{Array.from({length:18},(_,i)=><rect key={i} x={i*5+5} y={51-(i*17%37)} width="2.5" height={5+(i*17%37)} style={{animationDelay:`${i*.12}s`}}/>)}<path d="M3 57H98M3 37H98M3 17H98"/></> : <>{[0,1,2].map(i=><path key={i} d={`M12 ${16+i*13}L49 ${3+i*13} 88 ${16+i*13} 49 ${30+i*13}Z`} style={{animationDelay:`${i*.4}s`}}/>)}</>}
   </svg>;
-}
-function Crystal({ open, paused }) {
-  return <div className={'v2-crystal-system' + (open ? ' is-open' : '') + (paused ? ' is-paused' : '')} aria-hidden="true">
-    <div className="v2-orbit v2-orbit-one" /><div className="v2-orbit v2-orbit-two" />
-    <div className="v2-crystal">
-      <div className="v2-facet v2-facet-a" /><div className="v2-facet v2-facet-b" />
-      <div className="v2-facet v2-facet-c" /><div className="v2-facet v2-facet-d" />
-      <div className="v2-crystal-core">MA<span>.</span></div>
-    </div>
-    <div className="v2-network"><i/><i/><i/><i/><i/><i/><svg viewBox="0 0 320 320"><path d="M160 45L65 110 80 230 160 275 255 215 260 100 160 45M65 110L255 215M260 100L80 230M160 45L160 275M65 110L260 100M80 230L255 215"/></svg></div>
-    <div className="v2-pedestal"><div/></div>
-  </div>;
 }
 export default function V2Hero({ lite, setLite, paused, setPaused }) {
   const hero = useRef(null);
@@ -54,24 +43,24 @@ export default function V2Hero({ lite, setLite, paused, setPaused }) {
     el.addEventListener('pointermove',move);el.addEventListener('pointerleave',reset);
     return()=>{observer.disconnect();cancelAnimationFrame(frame);el.removeEventListener('pointermove',move);el.removeEventListener('pointerleave',reset);};
   },[paused,lite]);
-  return <section ref={hero} id="accueil" className={'v2-hero' + (paused || !visible ? ' v2-still' : '')}>
+  return <section ref={hero} id="accueil" className={'v2-hero' + (paused || !visible ? ' v2-still' : '') + (open ? ' is-exploring' : '')}>
     <div className="v2-backdrop" aria-hidden="true"/><div className="v2-atmosphere" aria-hidden="true"/>
     <div className="v2-sky" aria-hidden="true"/><div className="v2-mountains" aria-hidden="true"/><div className="v2-landscape" aria-hidden="true"/>
     <div className="v2-architecture" aria-hidden="true"><div className="v2-arch v2-arch-left"/><div className="v2-arch v2-arch-center"/><div className="v2-arch v2-arch-right"/><div className="v2-floor"/></div>
     <div className="v2-hero-main">
       <div className="v2-copy">
         <p className="v2-eyebrow"><span/> PORTFOLIO · CYBERSÉCURITÉ</p>
-        <h1><span>Mohamed</span><em>ABOGOURIN</em></h1>
+        <h1><span>Mohamed</span><em><svg className="v2-name-flourish" viewBox="0 0 520 110" fill="none" aria-hidden="true"><path d="M101 31C89 54 77 77 50 88C28 98 4 96 7 81C9 64 48 60 78 67M81 94C186 109 312 86 449 94C479 96 489 110 517 98"/></svg>ABOGOURIN</em></h1>
         <p className="v2-role">Étudiant en L3 Informatique, spécialisé en systèmes d’information, passionné par la cybersécurité, le pentest et les opérations SOC.</p>
         <div className="v2-actions"><a href="#projets" className="v2-primary">Découvrir mes projets <ArrowRight size={17}/></a>{profile.cv && <a href={profile.cv} download className="v2-secondary">Télécharger mon CV <Download size={16}/></a>}</div>
         <div className="v2-socials"><a href={profile.github} aria-label="GitHub" target="_blank" rel="noopener noreferrer"><Github size={18}/></a>{profile.linkedin && <a href={profile.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><Linkedin size={18}/></a>}<a href={"mailto:"+profile.email} aria-label="Email"><Mail size={18}/></a></div>
       </div>
       <div className="v2-art">
         <button type="button" className={"v2-crystal-button" + (!lite && !webglFailed ? " v2-enhanced" : "")} onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="crystal-status" aria-label={open ? 'Refermer le cristal interactif' : 'Ouvrir le cristal et explorer les domaines cybersécurité'}>
-          <Crystal open={open} paused={paused || !visible}/>
+          <CrystalFallback open={open} paused={paused || !visible}/>
           {!lite && visited && !webglFailed && <Suspense fallback={null}><CrystalWebGL open={open} paused={paused} onUnavailable={() => setWebglFailed(true)}/></Suspense>}
         </button>
-        <p id="crystal-status" className="v2-crystal-caption" role="status">{open ? "Réseau révélé · cliquez pour refermer" : "Cliquez pour révéler le réseau"}</p>
+        <p id="crystal-status" className="v2-crystal-caption" role="status">{open ? <><strong>Explorez mon univers cybersécurité</strong><span>Réseau révélé · choisissez un domaine ci-dessous</span></> : 'Cliquez pour révéler le réseau'}</p>
         {webglFailed && <p className="v2-render-note" role="status">Version légère active · interaction conservée</p>}
       </div>
     </div>
