@@ -76,6 +76,12 @@ jobs:
           done
           cat /tmp/portfolio-v2-preview.log
           exit 1
+      - name: Install browser test runner
+        run: |
+          mkdir -p /tmp/v2-playwright
+          npm install --prefix /tmp/v2-playwright --no-audit --no-fund playwright@1.58.2
+      - name: Test interactive behavior and WebGL
+        run: node scripts/browser-v2.mjs
       - name: Capture desktop and mobile screenshots
         run: |
           mkdir -p screenshots
