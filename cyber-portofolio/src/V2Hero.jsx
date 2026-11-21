@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
+const CrystalWebGL = lazy(() => import('./CrystalWebGL.jsx'));
 import { ArrowDown, ArrowRight, Download, Pause, Play, Sparkles } from 'lucide-react';
 import { profile } from './content';
 import './v2-hero.css';
@@ -22,6 +23,7 @@ function Crystal({ open, paused }) {
 }
 export default function V2Hero({ lite, setLite, paused, setPaused }) {
   const [open, setOpen] = useState(false);
+  const [webglFailed, setWebglFailed] = useState(false);
   return <section id="accueil" className="v2-hero">
     <div className="v2-sky" aria-hidden="true"/><div className="v2-mountains" aria-hidden="true"/>
     <div className="v2-architecture" aria-hidden="true"><div className="v2-arch v2-arch-left"/><div className="v2-arch v2-arch-right"/><div className="v2-floor"/></div>
@@ -35,8 +37,9 @@ export default function V2Hero({ lite, setLite, paused, setPaused }) {
         <div className="v2-actions"><a href="#projets" className="v2-primary">Découvrir mes projets <ArrowRight size={17}/></a>{profile.cv && <a href={profile.cv} download className="v2-secondary">Télécharger mon CV <Download size={16}/></a>}</div>
       </div>
       <div className="v2-art">
-        <button type="button" className="v2-crystal-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? 'Refermer le cristal interactif' : 'Ouvrir le cristal et explorer les domaines cybersécurité'}>
+        <button type="button" className={"v2-crystal-button" + (!lite && !webglFailed ? " v2-enhanced" : "")} onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? 'Refermer le cristal interactif' : 'Ouvrir le cristal et explorer les domaines cybersécurité'}>
           <Crystal open={open} paused={paused || lite}/>
+          {!lite && !webglFailed && <Suspense fallback={null}><CrystalWebGL open={open} paused={paused} onUnavailable={() => setWebglFailed(true)}/></Suspense>}
         </button>
         <div className="v2-crystal-caption">{open ? 'Explorez mon univers cybersécurité' : 'Touchez le cristal pour explorer'} <Sparkles size={13}/></div>
       </div>
