@@ -1,0 +1,44 @@
+name: Portfolio V2 checks
+
+on:
+  push:
+    branches:
+      - design/editorial-luxury-cyber-v2
+  pull_request:
+    paths:
+      - 'cyber-portofolio/**'
+      - '.github/workflows/portfolio-v2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cyber-portofolio
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '11.25.0'
+          run_install: false
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Content and integrity tests
+        run: pnpm check
+      - name: Build and prerender
+        run: pnpm build
+      - name: Verify generated pages
+        run: |
+          test -s dist/index.html
+          test -s dist/sitemap.xml
+          test -s dist/projets/bandit/index.html
+          grep -q 'ABOGOURIN' dist/index.html
