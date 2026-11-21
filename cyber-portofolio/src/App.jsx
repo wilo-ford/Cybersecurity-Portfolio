@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowUpRight, ArrowRight, ShieldCheck, Terminal, Network, Server, Mail, Menu, X, Github, Download, ExternalLink, Activity, Code } from 'lucide-react';
 import { profile, skills, projects, timeline } from './content';
-import Hero, { Brand } from './Hero.jsx';
+import { Brand } from './Hero.jsx';
+import V2Hero from './V2Hero.jsx';
 import Contact from './Contact.jsx';
 import PracticeDetails, { DocumentationStrip } from './PracticeDetails.jsx';
 import ProjectVisual from './ProjectVisual.jsx';
@@ -135,7 +136,7 @@ function Portfolio() {
     <a className="skip-link" href="#contenu">Aller au contenu</a>
     <header className="site-header immersive-header"><div className="header-inner"><a className="header-brand" href="#accueil" aria-label="Mohamed ABOGOURIN, accueil"><Brand /><span className="header-name">Mohamed <b>ABOGOURIN</b></span></a><nav id="mobile-nav" aria-label="Navigation principale" className={menu ? 'nav open' : 'nav'}>{navigation.map(([id, name]) => <a key={id} href={'#' + id} className={active === id ? 'active' : ''} onClick={() => setMenu(false)} aria-current={active === id ? 'location' : undefined}>{name}</a>)}</nav>{profile.github && <a className="github-header" href={profile.github} target="_blank" rel="noreferrer"><Github size={17} />GitHub</a>}<a className="header-contact" href="#contact"><Mail size={15} />Me contacter</a><button className="menu-button icon-button" onClick={() => setMenu(!menu)} aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu ? 'Fermer le menu' : 'Ouvrir le menu'}>{menu ? <X /> : <Menu />}</button></div></header>
     <main id="contenu">
-      <Hero lite={lite} setLite={setLite} paused={paused} setPaused={setPaused} />
+      <V2Hero lite={lite} setLite={setLite} paused={paused} setPaused={setPaused} />
       <section id="a-propos" className="section page-width"><SectionHeading number="01" label="À PROPOS" title={<>Linux, réseaux,<br /><em>sécurité web.</em></>} /><div className="about-layout"><div className="about-mark" aria-hidden="true"><span className="about-cross">+</span><div className="monogram">MA<span>.</span></div><span className="about-coordinates">COTONOU, BÉNIN<br />6.36° N · 2.43° E</span><div className="about-ring" /></div><div className="about-copy"><p className="lead">Étudiant à Cotonou,<br />la pratique comme fil conducteur.</p><p>{profile.about}</p><p>Mon parcours Bandit est accompagné de quatre comptes rendus publics. Mes projets académiques abordent aussi la supervision Linux, la virtualisation et la conteneurisation.</p><div className="about-facts"><div><span>FORMATION</span><strong>L3 · Systèmes d’Information</strong><small>ESGIS, Cotonou</small></div><div><span>MON APPROCHE</span><strong>Pratique & documentation</strong><small>Laboratoires et projets académiques</small></div></div>{profile.cv && <a href={profile.cv} className="text-button" download>Télécharger mon CV <Download size={16} /></a>}</div></div></section>
       <section id="competences" className="section skills-section"><div className="page-width"><SectionHeading number="02" label="COMPÉTENCES" title={<>Des bases solides.<br /><em>Un apprentissage continu.</em></>}>Les outils que je pratique et les connaissances que je développe en laboratoire et en formation.</SectionHeading><div className="skills-grid">{skills.map((skill, i) => {
               const Icon = icons[skill.icon];
