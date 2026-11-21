@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     defaults:
       run:
         working-directory: cyber-portofolio
@@ -44,7 +44,7 @@ jobs:
           grep -q 'ABOGOURIN' dist/index.html
 
   browser-preview:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: verify
     defaults:
       run:
